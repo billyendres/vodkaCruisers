@@ -11,7 +11,7 @@ const AgeRestriction = () => {
 
   const age = moment().format("YYYY") - year;
 
-  console.log(moment().format("YYYY"));
+  console.log(moment().format("MM"));
 
   const handleDayChange = e => {
     if (day < 0 || day > 31) {
@@ -41,9 +41,13 @@ const AgeRestriction = () => {
     <>
       <GlobalStyle />
       <Wrap>
-        <Logo src={logo} alt={logo} />
-        <Header>Please verify your age</Header>
-        <form>
+        <div style={{ width: "100%" }}>
+          <Logo src={logo} alt={logo} />
+        </div>
+        <div style={{ display: "block" }}>
+          <Header>Please verify your age</Header>
+        </div>
+        <form style={{ width: "100%" }}>
           <BoxWrap>
             <Input
               type="number"
@@ -88,10 +92,23 @@ const AgeRestriction = () => {
 export default AgeRestriction;
 
 const Wrap = styled.div`
-  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10vh;
 `;
 
-const Logo = styled.img``;
+const Day = styled.img``;
+
+const Logo = styled.img`
+  @media (max-width: 620px) {
+    width: 6rem;
+  }
+  @media (min-width: 1800px) {
+    width: 12rem;
+  }
+`;
 
 const Header = styled.h2`
   font-weight: 900;
@@ -100,6 +117,12 @@ const Header = styled.h2`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #ffffff;
+  @media (max-width: 620px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1800px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const BoxWrap = styled.div`
@@ -108,6 +131,15 @@ const BoxWrap = styled.div`
   display: inline-block;
   padding: 2rem 0;
   margin: 1rem 1rem;
+  @media (max-width: 620px) {
+    padding: 1rem 0;
+    margin: 0.5rem 1rem;
+    border: 4px solid #44c8f5;
+  }
+  @media (min-width: 1800px) {
+    border: 10px solid #44c8f5;
+    margin: 1.5rem 1.5rem;
+  }
 `;
 
 const Input = styled.input`
@@ -121,6 +153,12 @@ const Input = styled.input`
   outline: none;
   border: none;
   text-align: center;
+  @media (max-width: 620px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1800px) {
+    font-size: 3rem;
+  }
 `;
 
 const Button = styled.button`
@@ -138,6 +176,16 @@ const Button = styled.button`
   margin-bottom: 4rem;
   display: block;
   outline: none;
+  @media (max-width: 620px) {
+    font-size: 1rem;
+    padding: 1rem 4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: 1800px) {
+    padding: 3rem 10rem;
+    margin-top: 2rem;
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`
