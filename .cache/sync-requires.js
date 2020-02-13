@@ -5,7 +5,9 @@ const preferDefault = m => m && m.default || m
 
 
 exports.components = {
+  "component---cache-dev-404-page-js": hot(preferDefault(require("/Applications/MAMP/htdocs/vodkaCruiserGatsby/vodkaCruiserGatsby/.cache/dev-404-page.js"))),
   "component---src-pages-about-js": hot(preferDefault(require("/Applications/MAMP/htdocs/vodkaCruiserGatsby/vodkaCruiserGatsby/src/pages/about.js"))),
+  "component---src-pages-age-restriction-js": hot(preferDefault(require("/Applications/MAMP/htdocs/vodkaCruiserGatsby/vodkaCruiserGatsby/src/pages/ageRestriction.js"))),
   "component---src-pages-contact-js": hot(preferDefault(require("/Applications/MAMP/htdocs/vodkaCruiserGatsby/vodkaCruiserGatsby/src/pages/contact.js"))),
   "component---src-pages-faqs-js": hot(preferDefault(require("/Applications/MAMP/htdocs/vodkaCruiserGatsby/vodkaCruiserGatsby/src/pages/faqs.js"))),
   "component---src-pages-home-js": hot(preferDefault(require("/Applications/MAMP/htdocs/vodkaCruiserGatsby/vodkaCruiserGatsby/src/pages/home.js"))),

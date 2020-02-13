@@ -1,7 +1,7 @@
 import React from "react";
-import Home from "./home";
+import AgeRestriction from "./ageRestriction";
 const App = () => {
-  return <Home />;
+  return <AgeRestriction />;
 };
 
 export default App;
