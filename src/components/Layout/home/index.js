@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import Header from "./PageWrapper/Header";
 import Footer from "./PageWrapper/Footer";
 import SideBar from "./PageWrapper/Sidebar";
+import Avenir from "../fonts/AvenirLTStd.otf";
 
 const Layout = ({ children }) => {
   return (
@@ -36,7 +37,11 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100%;
     font-size: 1rem;
-    font-family: Avenir;
+    font-family: 'Avenir';
+    @font-face {
+    font-family: 'Avenir';
+    src: url(${Avenir});
+  }
 }`;
 
 const Wrap = styled.div`

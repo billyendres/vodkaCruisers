@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
 import logo from "./images/logo.svg";
 import moment from "moment";
+import Avenir from "../components/Layout/fonts/AvenirLTStd.otf";
 
 const AgeRestriction = () => {
   const [day, setDay] = useState();
@@ -11,7 +12,7 @@ const AgeRestriction = () => {
 
   const age = moment().format("YYYY") - year;
 
-  console.log(moment().format("MM"));
+  console.log(parseFloat(moment().format("YYYY")));
 
   const handleDayChange = e => {
     if (day < 0 || day > 31) {
@@ -204,7 +205,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     height: 100vh;
     font-size: 1rem;
-    font-family: Avenir;
     text-align: center;
+    font-family: 'Avenir';
+    @font-face {
+    font-family: 'Avenir';
+    src: url(${Avenir});
+  }
+
   }
   `;
