@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/contact";
 import youtube from "../components/Layout/contact/images/youtube.svg";
 import facebook from "../components/Layout/contact/images/facebook.svg";
@@ -7,81 +8,95 @@ import insta from "../components/Layout/contact/images/insta.svg";
 import FadeIn from "react-fade-in";
 import Zoom from "react-reveal/Zoom";
 
-const ContactPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <div style={{ minHeight: "90vh" }}>
-          <Wrap>
-            <TextWrap>
-              <Zoom top>
-                <Header>Contact Us</Header>
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query ContactQuery {
+        craft {
+          entries {
+            ... on Craft_contact_contact_Entry {
+              id
+              contactBody
+              contactMessage
+              socials
+              title
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const contactPage = craft.entries[0];
+      const { contactBody, contactMessage, socials, title } = contactPage;
+      return (
+        <Layout>
+          <FadeIn>
+            <div style={{ minHeight: "90vh" }}>
+              <Wrap>
+                <TextWrap>
+                  <Zoom top>
+                    <Header>{title}</Header>
+                  </Zoom>
+                  <Zoom top>
+                    <Body>{contactBody}</Body>
+                  </Zoom>
+                </TextWrap>
+              </Wrap>
+              <Zoom bottom>
+                <Line />
+                <Message>{contactMessage}</Message>
               </Zoom>
-              <Zoom top>
-                <Body>
-                  Want to talk VODKA CRUISER? Great. Us too. There are a few
-                  different ways to get in touch with us, depending on what it
-                  is you want to know. Have a look at the addresses below to
-                  make sure your enquiry ends up in the right inbox.
-                </Body>
-              </Zoom>
-            </TextWrap>
-          </Wrap>
-          <Zoom bottom>
-            <Line />
-            <Message>Send Us A Message</Message>
-          </Zoom>
-          <InputWrap>
-            <Zoom bottom>
-              <form>
-                <Input type="text" name="First Name" value="First Name*" />
-                <Input type="text" name="Last Name" value="Last Name*" />
-                <Input type="text" name="Your Email" value="Your Email*" />
-                <Select>
-                  <Option value="Subject">Subject</Option>
-                  <Option value="saab">Saab</Option>
-                  <Option value="mercedes">Mercedes</Option>
-                  <Option value="audi">Audi</Option>
-                </Select>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <InputLarge
-                    type="text"
-                    name="I'd like to..."
-                    value="I'd like to..."
+              <InputWrap>
+                <Zoom bottom>
+                  <form>
+                    <Input type="text" name="First Name" value="First Name*" />
+                    <Input type="text" name="Last Name" value="Last Name*" />
+                    <Input type="text" name="Your Email" value="Your Email*" />
+                    <Select>
+                      <Option value="Subject">Subject</Option>
+                      <Option value="saab">One</Option>
+                      <Option value="mercedes">Two</Option>
+                      <Option value="audi">Three</Option>
+                    </Select>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <InputLarge
+                        type="text"
+                        name="I'd like to..."
+                        value="I'd like to..."
+                      />
+                    </div>
+                  </form>
+                </Zoom>
+              </InputWrap>
+              <Zoom bottom>
+                <Button>Send</Button>
+                <div style={{ marginTop: "1.5rem" }} />
+                <Line />
+                <Message>{socials}</Message>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: "1rem",
+                  }}
+                >
+                  <img src={facebook} alt={facebook} />
+                  <img
+                    style={{ width: "1.75rem", margin: "1rem" }}
+                    src={youtube}
+                    alt={youtube}
                   />
+                  <img src={insta} alt={insta} />
                 </div>
-              </form>
-            </Zoom>
-          </InputWrap>
-          <Zoom bottom>
-            <Button>Send</Button>
-            <div style={{ marginTop: "1.5rem" }} />
-            <Line />
-            <Message>Follow Us</Message>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: "1rem",
-              }}
-            >
-              <img src={facebook} alt={facebook} />
-              <img
-                style={{ width: "1.75rem", margin: "1rem" }}
-                src={youtube}
-                alt={youtube}
-              />
-              <img src={insta} alt={insta} />
+              </Zoom>
             </div>
-          </Zoom>
-        </div>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default ContactPage;
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

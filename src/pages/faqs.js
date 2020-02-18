@@ -65,7 +65,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const faqs = craft.entries[0];
+      const faqs = craft.entries[1];
       const {
         dropdownFourBody,
         dropdownFourTitle,

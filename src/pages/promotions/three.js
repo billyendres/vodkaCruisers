@@ -29,7 +29,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const promotionsPageThree = craft.entries[1];
+      const promotionsPageThree = craft.entries[2];
       const {
         blockOneText,
         blockOneTitle,

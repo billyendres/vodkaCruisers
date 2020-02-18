@@ -43,7 +43,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const productsPageTwo = craft.entries[5];
+      const productsPageTwo = craft.entries[6];
       const {
         title,
         descriptionProductsTwo,

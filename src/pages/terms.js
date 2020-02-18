@@ -21,7 +21,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const termsPage = craft.entries[7];
+      const termsPage = craft.entries[8];
       const { title, termsPageContent } = termsPage;
       return (
         <Layout>

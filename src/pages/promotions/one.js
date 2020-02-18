@@ -44,7 +44,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const promotionsPageOne = craft.entries[3];
+      const promotionsPageOne = craft.entries[4];
       const {
         blockOneContent,
         blockThreeContent,
