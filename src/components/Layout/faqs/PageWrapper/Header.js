@@ -14,7 +14,7 @@ const Header = () => {
         <Link to="/products/one" style={{ textDecoration: "none" }}>
           <Text>Products</Text>
         </Link>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <Logo src={logo} alt={logo} />
         </Link>
         <Link to="/promotions/one" style={{ textDecoration: "none" }}>

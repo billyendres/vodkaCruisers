@@ -139,6 +139,14 @@ const BottleWrapOne = styled.div`
   background: #72bf44;
   margin: 1.5rem 0;
   border: 10px solid #ffff;
+  @media (max-width: 580px) {
+    width: 5rem;
+    height: 10rem;
+  }
+  @media (max-width: 860px) {
+    width: 15rem;
+    height: 20rem;
+  }
   @media (max-width: 1480px) {
     width: 20rem;
     height: 30rem;
@@ -155,6 +163,14 @@ const BottleWrapTwo = styled.div`
   width: 17rem;
   background: #8f499c;
   border: 10px solid #ffff;
+  @media (max-width: 580px) {
+    width: 5rem;
+    height: 10rem;
+  }
+  @media (max-width: 860px) {
+    width: 15rem;
+    height: 20rem;
+  }
   @media (max-width: 1480px) {
     width: 20rem;
     height: 30rem;
@@ -171,6 +187,14 @@ const BottleWrapThree = styled.div`
   background: #0082c6;
   margin: 1.5rem 0;
   border: 10px solid #ffff;
+  @media (max-width: 580px) {
+    width: 5rem;
+    height: 10rem;
+  }
+  @media (max-width: 860px) {
+    width: 15rem;
+    height: 20rem;
+  }
   @media (max-width: 1480px) {
     width: 20rem;
     height: 30rem;

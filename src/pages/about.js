@@ -1,42 +1,50 @@
 import React from "react";
+import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/about";
 import styled from "styled-components";
 import deck from "./images/deck.png";
 import FadeIn from "react-fade-in";
 import Bounce from "react-reveal/Bounce";
 
-const AboutPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Bounce top>
-            <Header>About Us</Header>
-          </Bounce>
-          <Bounce top>
-            <Paragraph>
-              Vodka Cruiser has eight flavours within its core range, Wild
-              Raspberry, Pure Pineapple, Lush Guava, Zesty Lemon-Line, Sunny
-              Orange Passion fruit, Bold Berry Blend, Ripe Strawberry and Juicy
-              Watermelon – the fruit inspired colours indicate their strong
-              flavour credentials. Vodka Cruiser’s range contains less sugar
-              than previous ranges whilst maintaining the same level of quality
-              of taste. Vodka Cruisers recent packaging update showcases clean,
-              modern and transparent labels denoting each flavours ‘character’
-              description, unique flavour symbol and the “Premium Triple
-              Distilled Vodka” signature. Vodka Cruiser “The flavour Of Life”!
-            </Paragraph>
-          </Bounce>
-          <Bounce bottom>
-            <Image src={deck} alt={deck} />
-          </Bounce>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default AboutPage;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query AboutQuery {
+        craft {
+          entries {
+            ... on Craft_about_about_Entry {
+              id
+              aboutPageContent
+              title
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      // console.log(craft.entries[0]);
+      const aboutPage = craft.entries[1];
+      const { title, aboutPageContent } = aboutPage;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Bounce top>
+                <Header>{title}</Header>
+              </Bounce>
+              <Bounce top>
+                <Paragraph>{aboutPageContent}</Paragraph>
+              </Bounce>
+              <Bounce bottom>
+                <Image src={deck} alt={deck} />
+              </Bounce>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

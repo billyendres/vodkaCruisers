@@ -15,7 +15,7 @@ const Header = () => {
         <Link to="/products/one" style={{ textDecoration: "none" }}>
           <Text>Products</Text>
         </Link>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <Zoom top>
             <Icon src={icon} alt={icon} />
           </Zoom>
@@ -74,4 +74,12 @@ const BurgerWrap = styled.div`
 const Icon = styled.img`
   width: 12rem;
   margin-top: 6rem;
+  @media (max-width: 1260px) {
+    width: 8rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 860px) {
+    width: 6rem;
+    margin-top: 3rem;
+  }
 `;

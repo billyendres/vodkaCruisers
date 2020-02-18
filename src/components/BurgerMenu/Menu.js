@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/home" style={{ textDecoration: "none" }}>
         <Text>Home</Text>
       </Link>
       <Link to="/about" style={{ textDecoration: "none" }}>
