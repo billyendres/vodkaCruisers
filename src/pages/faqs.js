@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/faqs";
 import musicNote from "./images/musicNote.svg";
 import headPhones from "./images/headPhones.svg";
@@ -41,130 +42,149 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Faq = () => {
-  const classes = useStyles();
-  const [expanded, setExpanded] = useState(false);
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query FAQsQuery {
+        craft {
+          entries {
+            ... on Craft_faqs_faqs_Entry {
+              id
+              dropdownFourBody
+              dropdownFourTitle
+              dropdownOneBody
+              dropdownOneTitle
+              dropdownThreeBody
+              dropdownThreeTitle
+              dropdownTwoBody
+              dropdownTwoTitle
+              title
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const faqs = craft.entries[0];
+      const {
+        dropdownFourBody,
+        dropdownFourTitle,
+        dropdownOneBody,
+        dropdownOneTitle,
+        dropdownThreeBody,
+        dropdownThreeTitle,
+        dropdownTwoBody,
+        dropdownTwoTitle,
+        faqHeader,
+        title,
+      } = faqs;
 
-  const handleChange = panel => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+      const classes = useStyles();
+      const [expanded, setExpanded] = useState(false);
 
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Background>
-            <MusicIcon src={musicNote} alt={musicNote} />
-            <WaveTopIcon src={waveTop} alt={waveTop} />
-            <WaveBottomIcon src={waveTop} alt={waveTop} />
-            <HeadphonesIcon src={headPhones} alt={headPhones} />
-            <CableIcon src={cable} alt={cable} />
-            <DiamondIcon src={diamond} alt={diamond} />
-            <Header>FAQs</Header>
-            <HeaderTwo>Let's talk about Vodka Cruiser.</HeaderTwo>
-            <div className={classes.root}>
-              <ExpansionPanel
-                expanded={expanded === "panel1"}
-                onChange={handleChange("panel1")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    What is Vodka Cruiser?
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam. Nulla
-                    facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam. Nulla
-                    facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam. Nulla
-                    facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam. Nulla
-                    facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam. Nulla
-                    facilisi. Phasellus sollicitudin nulla et quam mattis
-                    feugiat. Aliquam eget maximus est, id dignissim quam.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel
-                expanded={expanded === "panel2"}
-                onChange={handleChange("panel2")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2bh-content"
-                  id="panel2bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    How is Vodka Cruiser made?
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    Donec placerat, lectus sed mattis semper, neque lectus
-                    feugiat lectus, varius pulvinar diam eros in elit.
-                    Pellentesque convallis laoreet laoreet.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel
-                expanded={expanded === "panel3"}
-                onChange={handleChange("panel3")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel3bh-content"
-                  id="panel3bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    What does Vodka Cruiser taste like?
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis vel
-                    est augue.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel
-                expanded={expanded === "panel4"}
-                onChange={handleChange("panel4")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel4bh-content"
-                  id="panel4bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    Are there any other flavours?
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis vel
-                    est augue.
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-            </div>
-          </Background>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+      const handleChange = panel => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+      };
 
-export default Faq;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Background>
+                <MusicIcon src={musicNote} alt={musicNote} />
+                <WaveTopIcon src={waveTop} alt={waveTop} />
+                <WaveBottomIcon src={waveTop} alt={waveTop} />
+                <HeadphonesIcon src={headPhones} alt={headPhones} />
+                <CableIcon src={cable} alt={cable} />
+                <DiamondIcon src={diamond} alt={diamond} />
+                <Header>{title}</Header>
+                <HeaderTwo>{faqHeader}</HeaderTwo>
+                <div className={classes.root}>
+                  <ExpansionPanel
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel1")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownOneTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownOneBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                  <ExpansionPanel
+                    expanded={expanded === "panel2"}
+                    onChange={handleChange("panel2")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel2bh-content"
+                      id="panel2bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownTwoTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownTwoBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                  <ExpansionPanel
+                    expanded={expanded === "panel3"}
+                    onChange={handleChange("panel3")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel3bh-content"
+                      id="panel3bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownThreeTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownThreeBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                  <ExpansionPanel
+                    expanded={expanded === "panel4"}
+                    onChange={handleChange("panel4")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel4bh-content"
+                      id="panel4bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownFourTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownFourBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                </div>
+              </Background>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

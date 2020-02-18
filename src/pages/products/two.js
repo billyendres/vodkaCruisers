@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import posed from "react-pose";
 import background from "../../components/Layout/products/images/backgroundTwo.png";
@@ -25,52 +26,67 @@ const Box = posed.div({
   },
 });
 
-const ProductsPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Background src={background} alt={background} />
-        <Wrap>
-          <TextWrap>
-            <Nav>
-              <Fade left>
-                <Link to="/products/one">
-                  <Icon path={mdiChevronLeft} size={2} color="white" />
-                </Link>
-                BLACK
-                <Link to="/products/three">
-                  <Icon path={mdiChevronRight} size={2} color="white" />
-                </Link>
-              </Fade>
-            </Nav>
-            <Fade left>
-              <Header>Black</Header>
-            </Fade>
-          </TextWrap>
-          <BodyWrap>
-            <Fade left>
-              <Body>
-                Cruiser Black was launched in late 2003 after the huge success
-                of Vodka Cruiser. Cruiser Black combines the iconic Cruiser
-                brand name with premium triple distilled vodka and a higher ABV
-                of 6.5% culminating in a top shelf unisex product. Available in
-                Raspberry, Lemon Lime & Bitters, Citrus and Ice (Exclusive to
-                Dan Murphy’s). Taste the flavour!
-              </Body>
-            </Fade>
-          </BodyWrap>
-          <Box>
-            <Fade right>
-              <Bottles src={bottles} alt={bottles} />
-            </Fade>
-          </Box>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default ProductsPage;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query ProductsTwoQuery {
+        craft {
+          entries {
+            ... on Craft_productsTwo_productsTwo_Entry {
+              id
+              descriptionProductsTwo
+              title
+              headerProductsTwo
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const productsPageTwo = craft.entries[5];
+      const {
+        title,
+        descriptionProductsTwo,
+        headerProductsTwo,
+      } = productsPageTwo;
+      return (
+        <Layout>
+          <FadeIn>
+            <Background src={background} alt={background} />
+            <Wrap>
+              <TextWrap>
+                <Nav>
+                  <Fade left>
+                    <Link to="/products/one">
+                      <Icon path={mdiChevronLeft} size={2} color="white" />
+                    </Link>
+                    {title}
+                    <Link to="/products/three">
+                      <Icon path={mdiChevronRight} size={2} color="white" />
+                    </Link>
+                  </Fade>
+                </Nav>
+                <Fade left>
+                  <Header>{headerProductsTwo}</Header>
+                </Fade>
+              </TextWrap>
+              <BodyWrap>
+                <Fade left>
+                  <Body>{descriptionProductsTwo}</Body>
+                </Fade>
+              </BodyWrap>
+              <Box>
+                <Fade right>
+                  <Bottles src={bottles} alt={bottles} />
+                </Fade>
+              </Box>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

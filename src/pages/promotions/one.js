@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
-import { Link } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import Layout from "../../components/Layout/promotions/promotionsThree";
 import backgroundIcons from "../../components/Layout/promotions/images/backgroundIcons.png";
 import bottlesOne from "../../components/Layout/promotions/images/bottlesOne.png";
@@ -27,59 +27,77 @@ const Box = posed.div({
   },
 });
 
-const PromotionsPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Background src={backgroundIcons} alt={backgroundIcons} />
-        <Wrap>
-          <div style={{ position: "absolute", top: "50%", left: "-1rem" }}>
-            <Link to="/promotions/three">
-              <Icon path={mdiChevronLeft} size={4} color="white" />
-            </Link>
-          </div>
-          <ImageWrap>
-            <Box style={{ display: "inline-block" }}>
-              <Fade left>
-                <BottleWrapOne>
-                  <BottlesOne src={bottlesOne} alt={bottlesOne} />
-                  <BottleText>
-                    Vodka Cruiser – GWP Model Co Promotion
-                  </BottleText>
-                </BottleWrapOne>
-              </Fade>
-            </Box>
-            <Box style={{ display: "inline-block" }}>
-              <Fade bottom>
-                <BottleWrapTwo>
-                  <BottlesTwo src={bottlesTwo} alt={bottlesTwo} />
-                  <BottleText>Cruiser Indies Summer</BottleText>
-                </BottleWrapTwo>
-              </Fade>
-            </Box>
-            <Box style={{ display: "inline-block" }}>
-              <Fade right>
-                <BottleWrapThree>
-                  <BottlesThree src={bottlesThree} alt={bottlesThree} />
-                  <BottleText>
-                    Cast your vote to pick the next Vodka Cruiser flavour
-                  </BottleText>
-                </BottleWrapThree>
-              </Fade>
-            </Box>
-          </ImageWrap>
-          <div style={{ position: "absolute", top: "50%", right: "-1rem" }}>
-            <Link to="/promotions/two">
-              <Icon path={mdiChevronRight} size={4} color="white" />
-            </Link>
-          </div>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default PromotionsPage;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query PromotionsOneQuery {
+        craft {
+          entries {
+            ... on Craft_promotionsOne_promotionOne_Entry {
+              id
+              blockOneContent
+              blockThreeContent
+              blockTwoContent
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const promotionsPageOne = craft.entries[3];
+      const {
+        blockOneContent,
+        blockThreeContent,
+        blockTwoContent,
+      } = promotionsPageOne;
+      return (
+        <Layout>
+          <FadeIn>
+            <Background src={backgroundIcons} alt={backgroundIcons} />
+            <Wrap>
+              <div style={{ position: "absolute", top: "50%", left: "-1rem" }}>
+                <Link to="/promotions/three">
+                  <Icon path={mdiChevronLeft} size={4} color="white" />
+                </Link>
+              </div>
+              <ImageWrap>
+                <Box style={{ display: "inline-block" }}>
+                  <Fade left>
+                    <BottleWrapOne>
+                      <BottlesOne src={bottlesOne} alt={bottlesOne} />
+                      <BottleText>{blockOneContent}</BottleText>
+                    </BottleWrapOne>
+                  </Fade>
+                </Box>
+                <Box style={{ display: "inline-block" }}>
+                  <Fade bottom>
+                    <BottleWrapTwo>
+                      <BottlesTwo src={bottlesTwo} alt={bottlesTwo} />
+                      <BottleText>{blockTwoContent}</BottleText>
+                    </BottleWrapTwo>
+                  </Fade>
+                </Box>
+                <Box style={{ display: "inline-block" }}>
+                  <Fade right>
+                    <BottleWrapThree>
+                      <BottlesThree src={bottlesThree} alt={bottlesThree} />
+                      <BottleText>{blockThreeContent}</BottleText>
+                    </BottleWrapThree>
+                  </Fade>
+                </Box>
+              </ImageWrap>
+              <div style={{ position: "absolute", top: "50%", right: "-1rem" }}>
+                <Link to="/promotions/two">
+                  <Icon path={mdiChevronRight} size={4} color="white" />
+                </Link>
+              </div>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

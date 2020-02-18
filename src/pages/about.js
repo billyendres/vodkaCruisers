@@ -22,7 +22,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const aboutPage = craft.entries[2];
+      const aboutPage = craft.entries[8];
       console.log(craft);
       const { title, aboutPageContent } = aboutPage;
       return (

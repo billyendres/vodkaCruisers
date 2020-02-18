@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import FadeIn from "react-fade-in";
 import Layout from "../../components/Layout/promotions/promotionsGreen";
 import backgroundGreen from "../../components/Layout/promotions/images/backgroundGreen.png";
@@ -9,74 +9,87 @@ import Icon from "@mdi/react";
 import { mdiChevronLeft } from "@mdi/js";
 import { mdiChevronRight } from "@mdi/js";
 
-const PromotionsPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Background src={backgroundGreen} alt={backgroundGreen} />
-          <TextWrap>
-            <LightSpeed left>
-              <Header>
-                <Link to="/promotions/one">
-                  <Icon
-                    path={mdiChevronLeft}
-                    size={2}
-                    color="white"
-                    style={{ marginTop: "0.5rem" }}
-                  />
-                </Link>
-                Cruiser Indies Summer
-                <Link to="/promotions/three">
-                  <Icon
-                    path={mdiChevronRight}
-                    size={2}
-                    color="white"
-                    style={{ marginTop: "0.5rem" }}
-                  />
-                </Link>
-              </Header>
-            </LightSpeed>
-            <Block>
-              <LightSpeed>
-                <BlockHeader>Promotion Period</BlockHeader>
-                <BlockBody>9.00am 01/9/19 - 11:59pm 30/11/19</BlockBody>
-              </LightSpeed>
-            </Block>
-            <Block>
-              <LightSpeed>
-                <BlockHeader>Relevant States</BlockHeader>
-                <BlockBody>NSW, ACT, SA, NT, QLD, VIC, TAS, WA</BlockBody>
-              </LightSpeed>
-            </Block>
-            <OverFlow>
-              <LightSpeed right>
-                <OverflowText>
-                  Entrants/Claimants: Entry to the Promotion is open only to
-                  Australian residents during the Promotion Period, aged 18
-                  years + and who fulfil the claim requirements. <p />
-                  Entry Restrictions: Must be aged 18 years + Directors,
-                  management, employees, officers and contractors (and their
-                  immediate families) of the Promoter, of any Participating
-                  Store or of the agencies or companies associated with this
-                  Promotion are ineligible. <p />
-                  “Immediate families” means spouse, partner, parent, natural or
-                  adopted child, and sibling (whether natural or adopted by a
-                  parent), whether or not they live in the same household as the
-                  director, manager, employee, officer or contractor.
-                  Participating Stores: Bottle –O, IGA Liquor, Cellarbrations
-                  and Big Bargain in the Relevant States
-                </OverflowText>
-              </LightSpeed>
-            </OverFlow>
-          </TextWrap>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default PromotionsPage;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query PromotionsTwoQuery {
+        craft {
+          entries {
+            ... on Craft_promotionsTwo_promotionsTwo_Entry {
+              id
+              title
+              blockOneBody
+              blockOneHeader
+              blockTwoBody
+              blockTwoHeader
+              promotionsContent
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const promotionsPageTwo = craft.entries[2];
+      const {
+        title,
+        blockOneBody,
+        blockOneHeader,
+        blockTwoBody,
+        blockTwoHeader,
+        promotionsContent,
+      } = promotionsPageTwo;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Background src={backgroundGreen} alt={backgroundGreen} />
+              <TextWrap>
+                <LightSpeed left>
+                  <Header>
+                    <Link to="/promotions/one">
+                      <Icon
+                        path={mdiChevronLeft}
+                        size={2}
+                        color="white"
+                        style={{ marginTop: "0.5rem" }}
+                      />
+                    </Link>
+                    {title}
+                    <Link to="/promotions/three">
+                      <Icon
+                        path={mdiChevronRight}
+                        size={2}
+                        color="white"
+                        style={{ marginTop: "0.5rem" }}
+                      />
+                    </Link>
+                  </Header>
+                </LightSpeed>
+                <Block>
+                  <LightSpeed>
+                    <BlockHeader>{blockOneHeader}</BlockHeader>
+                    <BlockBody>{blockOneBody}</BlockBody>
+                  </LightSpeed>
+                </Block>
+                <Block>
+                  <LightSpeed>
+                    <BlockHeader>{blockTwoHeader}</BlockHeader>
+                    <BlockBody>{blockTwoBody}</BlockBody>
+                  </LightSpeed>
+                </Block>
+                <OverFlow>
+                  <LightSpeed right>
+                    <OverflowText>{promotionsContent}</OverflowText>
+                  </LightSpeed>
+                </OverFlow>
+              </TextWrap>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

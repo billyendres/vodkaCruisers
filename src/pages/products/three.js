@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import posed from "react-pose";
 import background from "../../components/Layout/products/images/backgroundThree.png";
@@ -25,51 +26,67 @@ const Box = posed.div({
   },
 });
 
-const ProductsPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Background src={background} alt={background} />
-        <Wrap>
-          <TextWrap>
-            <Nav>
-              <Fade right>
-                <Link to="/products/two">
-                  <Icon path={mdiChevronLeft} size={2} color="white" />
-                </Link>
-                CORE
-                <Link to="/products/one">
-                  <Icon path={mdiChevronRight} size={2} color="white" />
-                </Link>
-              </Fade>
-            </Nav>
-            <Fade right>
-              <Header>Core</Header>
-            </Fade>
-          </TextWrap>
-          <BodyWrap>
-            <Fade right>
-              <Body>
-                Vodka Cruiser has eight flavours within its core range, Wild
-                Raspberry, Pure Pineapple, Lush Guava, Zesty Lemon-Line, Sunny
-                Orange Passion fruit, Bold Berry Blend, Ripe Strawberry and
-                Juicy Watermelon – the fruit inspired colours indicate their
-                strong flavour credentials.
-              </Body>
-            </Fade>
-          </BodyWrap>
-          <Box>
-            <Fade left>
-              <Bottles src={bottles} alt={bottles} />
-            </Fade>
-          </Box>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default ProductsPage;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query ProductsThreeQuery {
+        craft {
+          entries {
+            ... on Craft_productsThree_productsThree_Entry {
+              id
+              descriptionProductsThree
+              title
+              headerProductsThree
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const productsPageThree = craft.entries[4];
+      const {
+        title,
+        descriptionProductsThree,
+        headerProductsThree,
+      } = productsPageThree;
+      return (
+        <Layout>
+          <FadeIn>
+            <Background src={background} alt={background} />
+            <Wrap>
+              <TextWrap>
+                <Nav>
+                  <Fade right>
+                    <Link to="/products/two">
+                      <Icon path={mdiChevronLeft} size={2} color="white" />
+                    </Link>
+                    {title}
+                    <Link to="/products/one">
+                      <Icon path={mdiChevronRight} size={2} color="white" />
+                    </Link>
+                  </Fade>
+                </Nav>
+                <Fade right>
+                  <Header>{headerProductsThree}</Header>
+                </Fade>
+              </TextWrap>
+              <BodyWrap>
+                <Fade right>
+                  <Body>{descriptionProductsThree}</Body>
+                </Fade>
+              </BodyWrap>
+              <Box>
+                <Fade left>
+                  <Bottles src={bottles} alt={bottles} />
+                </Fade>
+              </Box>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;
