@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import posed from "react-pose";
 import background from "../../components/Layout/products/images/background.png";
@@ -25,53 +26,63 @@ const Box = posed.div({
   },
 });
 
-const ProductsPage = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Background src={background} alt={background} />
-        <Wrap>
-          <TextWrap>
-            <Nav>
-              <Fade top>
-                <Link to="/products/three">
-                  <Icon path={mdiChevronLeft} size={2} color="white" />
-                </Link>
-                ZERO
-                <Link to="/products/two">
-                  <Icon path={mdiChevronRight} size={2} color="white" />
-                </Link>
-              </Fade>
-            </Nav>
-            <Fade top>
-              <Header>Sugar Free</Header>
-            </Fade>
-          </TextWrap>
-          <BodyWrap>
-            <Fade top>
-              <Body>
-                Vodka Cruiser Sugar Free has enhanced the alcoholic beverage by
-                combining genuine triple distilled vodka & Vodka Cruiser famous
-                great taste with a sugar free formulation. Available in 3
-                exciting flavours, Cruiser Sugar Free is the answer for those
-                who look to balance great times with well being. With less than
-                100 calories per serving & natural flavours, Cruiser Sugar Free
-                is giving women what they want.
-              </Body>
-            </Fade>
-          </BodyWrap>
-          <Box>
-            <Fade bottom>
-              <Bottles src={bottles} alt={bottles} />
-            </Fade>
-          </Box>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default ProductsPage;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query ProductsOneQuery {
+        craft {
+          entries {
+            ... on Craft_productsOne_productsOne_Entry {
+              id
+              productDescription
+              title
+              header
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const productsPageOne = craft.entries[0];
+      const { title, productDescription, header } = productsPageOne;
+      return (
+        <Layout>
+          <FadeIn>
+            <Background src={background} alt={background} />
+            <Wrap>
+              <TextWrap>
+                <Nav>
+                  <Fade top>
+                    <Link to="/products/three">
+                      <Icon path={mdiChevronLeft} size={2} color="white" />
+                    </Link>
+                    {title}
+                    <Link to="/products/two">
+                      <Icon path={mdiChevronRight} size={2} color="white" />
+                    </Link>
+                  </Fade>
+                </Nav>
+                <Fade top>
+                  <Header>{header}</Header>
+                </Fade>
+              </TextWrap>
+              <BodyWrap>
+                <Fade top>
+                  <Body>{productDescription}</Body>
+                </Fade>
+              </BodyWrap>
+              <Box>
+                <Fade bottom>
+                  <Bottles src={bottles} alt={bottles} />
+                </Fade>
+              </Box>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

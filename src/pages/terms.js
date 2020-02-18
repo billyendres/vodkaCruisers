@@ -1,51 +1,45 @@
 import React from "react";
+import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/terms";
 import styled from "styled-components";
 import FadeIn from "react-fade-in";
 import Flip from "react-reveal/Flip";
 
-const TermsAndConditions = () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Flip top>
-            <Header>Website Terms of Use</Header>
-          </Flip>
-          <Flip top>
-            <Body>
-              <p>
-                These Terms of Use set out the terms on which you use the
-                website of Asahi Premium Beverages or the Asahi Australia Group
-                (the “Site”).
-              </p>
-              By accessing and using the Site, you accept that all of these
-              Terms of Use apply.
-              <p>
-                If you do not agree and accept that all of these Terms of Use
-                apply to your use of the Site, please exit the Site immediately
-                and refrain from using the Site in the future. These Terms of
-                Use should be read together with our Privacy Policy, which
-                explains how we collect, use, disclose and manage your personal
-                information.
-              </p>
-              1. Some useful definitions In these Terms of Use: Including means
-              “including, but not limited to” Asahi Premium Beverages means
-              Asahi Premium Beverages Pty Ltd ACN 077 568 480 of Level 4, 99
-              Coventry Street, South Melbourne VIC 3205 Australia Asahi
-              Australia Group means any direct or indirect parent, subsidiary,
-              or sponsor or an “Associated Entity” of Asahi Premium Beverages
-              (as that term is defined under the Corporations Act 2001 (Cth) 2.
-              Your use of the Site
-            </Body>
-          </Flip>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
-
-export default TermsAndConditions;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query TermsQuery {
+        craft {
+          entries {
+            ... on Craft_term_terms_Entry {
+              id
+              title
+              termsPageContent
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const termsPage = craft.entries[1];
+      const { title, termsPageContent } = termsPage;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Flip top>
+                <Header>{title}</Header>
+              </Flip>
+              <Flip top>
+                <Body>{termsPageContent}</Body>
+              </Flip>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   min-height: 91vh;

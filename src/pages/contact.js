@@ -6,7 +6,6 @@ import facebook from "../components/Layout/contact/images/facebook.svg";
 import insta from "../components/Layout/contact/images/insta.svg";
 import FadeIn from "react-fade-in";
 import Zoom from "react-reveal/Zoom";
-// import bolt from "../components/Layout/contact/images/bolt.svg";
 
 const ContactPage = () => {
   return (
@@ -27,8 +26,6 @@ const ContactPage = () => {
                 </Body>
               </Zoom>
             </TextWrap>
-            {/* <Bolt src={bolt} alt={bolt} />
-        <BoltTwo src={bolt} alt={bolt} /> */}
           </Wrap>
           <Zoom bottom>
             <Line />

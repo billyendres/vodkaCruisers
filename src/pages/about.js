@@ -22,8 +22,8 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      // console.log(craft.entries[0]);
-      const aboutPage = craft.entries[1];
+      const aboutPage = craft.entries[2];
+      console.log(craft);
       const { title, aboutPageContent } = aboutPage;
       return (
         <Layout>
