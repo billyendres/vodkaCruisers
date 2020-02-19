@@ -9,13 +9,22 @@ const Sidebar = () => {
   return (
     <div>
       <SidebarLeft>
-        <FacebookIcon src={facebook} alt={facebook} />
-        <YoutubeIcon src={youtube} alt={youtube} />
-        <InstaIcon src={insta} alt={insta} />
+        <a
+          href="https://www.facebook.com/vodkacruiser"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FacebookIcon src={facebook} alt={facebook} />
+        </a>
+        <a
+          href="https://www.instagram.com/vodkacruiser/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InstaIcon src={insta} alt={insta} />
+        </a>
       </SidebarLeft>
-      <SidebarRight>
-        <EnIcon src={en} alt={en} />
-      </SidebarRight>
+      <SidebarRight />
     </div>
   );
 };
@@ -29,7 +38,7 @@ const SidebarLeft = styled.div`
   justify-content: center;
   height: 100vh;
   overflow-y: scroll;
-  width: 3rem;
+  width: 3.5rem;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -37,7 +46,7 @@ const SidebarLeft = styled.div`
   background-color: white;
   overflow-x: hidden;
   @media (max-width: 830px) {
-    width: 2rem;
+    width: 2.25rem;
   }
 `;
 
@@ -48,7 +57,7 @@ const SidebarRight = styled.div`
   justify-content: center;
   height: 100vh;
   overflow-y: scroll;
-  width: 3rem;
+  width: 3.5rem;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -56,7 +65,7 @@ const SidebarRight = styled.div`
   background-color: white;
   overflow-x: hidden;
   @media (max-width: 830px) {
-    width: 2rem;
+    width: 2.25rem;
   }
 `;
 

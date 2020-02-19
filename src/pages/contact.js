@@ -27,7 +27,7 @@ export default () => (
     `}
     render={({ craft }) => {
       const contactPage = craft.entries[0];
-      const { contactBody, contactMessage, socials, title } = contactPage;
+      const { contactMessage, socials, title, contactBody } = contactPage;
 
       const [firstName, setFirstName] = useState("");
       const [lastName, setLastName] = useState("");

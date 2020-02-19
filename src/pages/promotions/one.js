@@ -149,7 +149,7 @@ const BottleText = styled.div`
   @media (max-width: 860px) {
     font-size: 1.4rem;
   }
-  @media (min-width: 1480px) {
+  @media (min-width: 1880px) {
     font-size: 2.25rem;
   }
 `;
@@ -212,7 +212,7 @@ const BottlesOne = styled.img`
     width: 6rem;
     margin-top: 20%;
   }
-  @media (min-width: 1480px) {
+  @media (min-width: 1880px) {
     width: 12rem;
   }
 `;
@@ -224,7 +224,7 @@ const BottlesTwo = styled.img`
     width: 6rem;
     margin-top: 20%;
   }
-  @media (min-width: 1480px) {
+  @media (min-width: 1880px) {
     width: 12rem;
   }
 `;
@@ -236,7 +236,7 @@ const BottlesThree = styled.img`
     width: 6rem;
     margin-top: 20%;
   }
-  @media (min-width: 1480px) {
+  @media (min-width: 1880px) {
     width: 12rem;
   }
 `;
