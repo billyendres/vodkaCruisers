@@ -114,6 +114,9 @@ const Wrap = styled.div`
   @media (max-width: 830px) {
     margin: 2rem 2rem;
   }
+  @media (min-width: 1800px) {
+    height: 25rem;
+  }
 `;
 
 const TextWrap = styled.div`
@@ -127,6 +130,9 @@ const Header = styled.h1`
   letter-spacing: 0.02em;
   color: #006838;
   margin-top: 3.5rem;
+  @media (min-width: 1800px) {
+    font-size: 2.25em;
+  }
 `;
 
 const Body = styled.div`
@@ -136,34 +142,6 @@ const Body = styled.div`
   text-transform: uppercase;
   color: #003815;
 `;
-
-// const Bolt = styled.img`
-//   position: absolute;
-//   z-index: 1000;
-//   top: 18%;
-//   left: 10%;
-//   width: 3rem;
-//   @media (max-width: 980px) {
-//     width: 2rem;
-//   }
-//   @media (max-width: 630px) {
-//     width: 1.5rem;
-//   }
-// `;
-
-// const BoltTwo = styled.img`
-//   position: absolute;
-//   z-index: 1000;
-//   top: 18%;
-//   right: 10%;
-//   width: 3rem;
-//   @media (max-width: 980px) {
-//     width: 2rem;
-//   }
-//   @media (max-width: 630px) {
-//     width: 1.5rem;
-//   }
-// `;
 
 const Message = styled.div`
   font-weight: 900;
@@ -177,6 +155,9 @@ const Message = styled.div`
   position: relative;
   background: #ffff;
   padding: 0 2rem;
+  @media (min-width: 1800px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Line = styled.div`

@@ -10,17 +10,16 @@ const HomePage = () => {
     <Layout>
       <FadeIn>
         <Wrap>
-          <div>
+          <TextWrap>
             <Fade top>
               <Header>Vodka Cruiser</Header>
             </Fade>
             <Fade bottom>
               <Text>Stay Colourful</Text>
             </Fade>
-          </div>
+          </TextWrap>
           <Background src={background} alt={background} />
         </Wrap>
-        <BottomWrap />
       </FadeIn>
     </Layout>
   );
@@ -31,7 +30,7 @@ export default HomePage;
 const Wrap = styled.div`
   background-color: #243a76;
   position: relative;
-  height: 94vh;
+  flex: 1;
   flex-wrap: wrap;
   align-items: center;
   display: flex;
@@ -39,16 +38,19 @@ const Wrap = styled.div`
 `;
 
 const Background = styled.img`
-  top: 4rem;
-  width: 94%;
-  height: 94%;
+  top: 1rem;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  @media (max-width: 830px) {
-    top: 3rem;
-  }
-  @media (max-width: 680px) {
+  @media (max-width: 480px) {
     display: none;
   }
+`;
+
+const TextWrap = styled.div`
+  margin-top: 40vh;
+  position: absolute;
+  z-index: 1;
 `;
 
 const Header = styled.h1`
@@ -59,6 +61,9 @@ const Header = styled.h1`
   text-transform: uppercase;
   color: #ffffff;
   margin-top: 7rem;
+  @media (min-width: 1750px) {
+    font-size: 5em;
+  }
   @media (max-width: 1350px) {
     font-size: 3em;
   }
@@ -81,6 +86,9 @@ const Text = styled.h2`
   letter-spacing: 0.05em;
   color: #ffcb05;
   margin-top: -2rem;
+  @media (min-width: 1750px) {
+    font-size: 3em;
+  }
   @media (max-width: 1350px) {
     font-size: 1.7em;
   }
@@ -91,11 +99,4 @@ const Text = styled.h2`
   @media (max-width: 680px) {
     font-size: 1.25em;
   }
-`;
-
-const BottomWrap = styled.div`
-  background: #ffff;
-  position: fixed;
-  height: 20vh;
-  width: 100%;
 `;

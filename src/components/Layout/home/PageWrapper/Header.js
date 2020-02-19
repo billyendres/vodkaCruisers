@@ -50,6 +50,9 @@ const Wrap = styled.div`
   @media (max-width: 830px) {
     height: 3rem;
   }
+  @media (min-width: 1800px) {
+    height: 6rem;
+  }
 `;
 
 const Text = styled.span`
@@ -62,6 +65,10 @@ const Text = styled.span`
   letter-spacing: 0.1em;
   @media (max-width: 860px) {
     display: none;
+  }
+  @media (min-width: 1800px) {
+    height: 6rem;
+    font-size: 1.75em;
   }
 `;
 
@@ -81,5 +88,9 @@ const Icon = styled.img`
   @media (max-width: 860px) {
     width: 6rem;
     margin-top: 3rem;
+  }
+  @media (min-width: 1800px) {
+    width: 16rem;
+    margin-top: 10rem;
   }
 `;
