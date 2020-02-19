@@ -102,6 +102,11 @@ const Background = styled.img`
   @media (max-width: 980px) {
     display: none;
   }
+  @media (min-width: 1800px) {
+    margin-top: 4rem;
+    height: 86vh;
+    width: 80%;
+  }
 `;
 
 const TextWrap = styled.div`
@@ -123,8 +128,14 @@ const Header = styled.h1`
   line-height: 120%;
   letter-spacing: 0.02em;
   color: #ffffff;
-  @media (min-width: 2480px) {
-    font-size: 5rem;
+  @media (max-width: 860px) {
+    margin-top: 4rem;
+    font-size: 1.25em;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1800px) {
+    font-size: 2.5em;
+    margin-top: 9rem;
   }
 `;
 
@@ -134,6 +145,10 @@ const Block = styled.div`
   align-items: center;
   margin: 0.5rem 0.5rem;
   padding: 0.5rem 1rem;
+  @media (max-width: 860px) {
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+  }
 `;
 
 const BlockHeader = styled.h3`
@@ -146,7 +161,7 @@ const BlockHeader = styled.h3`
   margin: 0;
   margin-bottom: 0.25rem;
   @media (min-width: 2480px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -166,7 +181,11 @@ const OverFlow = styled.div`
   max-height: 40%;
   position: fixed;
   margin-right: 10%;
-  padding-top: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  @media (min-width: 1400px) {
+    max-height: 80%;
+  }
 `;
 
 const OverflowText = styled.div`

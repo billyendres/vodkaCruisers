@@ -9,7 +9,6 @@ exports.components = {
   "component---src-pages-faqs-js": () => import("./../src/pages/faqs.js" /* webpackChunkName: "component---src-pages-faqs-js" */),
   "component---src-pages-home-js": () => import("./../src/pages/home.js" /* webpackChunkName: "component---src-pages-home-js" */),
   "component---src-pages-index-js": () => import("./../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */),
-  "component---src-pages-products-js": () => import("./../src/pages/products.js" /* webpackChunkName: "component---src-pages-products-js" */),
   "component---src-pages-products-one-js": () => import("./../src/pages/products/one.js" /* webpackChunkName: "component---src-pages-products-one-js" */),
   "component---src-pages-products-three-js": () => import("./../src/pages/products/three.js" /* webpackChunkName: "component---src-pages-products-three-js" */),
   "component---src-pages-products-two-js": () => import("./../src/pages/products/two.js" /* webpackChunkName: "component---src-pages-products-two-js" */),
