@@ -46,6 +46,9 @@ const Background = styled.img`
   @media (max-width: 830px) {
     top: 3rem;
   }
+  @media (max-width: 680px) {
+    display: none;
+  }
 `;
 
 const Header = styled.h1`
@@ -63,22 +66,10 @@ const Header = styled.h1`
     font-size: 2.5em;
   }
   @media (max-width: 820px) {
-    font-size: 2.25em;
-  }
-  @media (max-width: 750px) {
     font-size: 2em;
   }
-  @media (max-width: 670px) {
+  @media (max-width: 680px) {
     font-size: 1.5em;
-  }
-  @media (max-width: 470px) {
-    font-size: 1.25em;
-  }
-  @media (max-width: 380px) {
-    font-size: 1.125em;
-  }
-  @media (max-width: 350px) {
-    font-size: 1em;
   }
 `;
 
@@ -97,14 +88,8 @@ const Text = styled.h2`
     font-size: 1.5em;
     margin-top: -1rem;
   }
-  @media (max-width: 820px) {
+  @media (max-width: 680px) {
     font-size: 1.25em;
-  }
-  @media (max-width: 750px) {
-    font-size: 1em;
-  }
-  @media (max-width: 670px) {
-    font-size: 0.8em;
   }
 `;
 

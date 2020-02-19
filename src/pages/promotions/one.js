@@ -146,28 +146,24 @@ const BottleText = styled.div`
   text-align: center;
   letter-spacing: 0.02em;
   color: #ffff;
+  @media (max-width: 860px) {
+    font-size: 1.4rem;
+  }
   @media (min-width: 1480px) {
     font-size: 2.25rem;
   }
 `;
 
 const BottleWrapOne = styled.div`
-  width: 17rem;
-  height: 25rem;
+  width: 18rem;
+  height: 28rem;
   background: #72bf44;
   margin: 1.5rem 0;
   border: 10px solid #ffff;
-  @media (max-width: 580px) {
-    width: 5rem;
-    height: 10rem;
-  }
   @media (max-width: 860px) {
     width: 15rem;
-    height: 20rem;
-  }
-  @media (max-width: 1480px) {
-    width: 20rem;
-    height: 30rem;
+    height: 21rem;
+    border: 5px solid #ffff;
   }
   @media (min-width: 1880px) {
     width: 25rem;
@@ -176,22 +172,15 @@ const BottleWrapOne = styled.div`
 `;
 
 const BottleWrapTwo = styled.div`
-  height: 25rem;
+  width: 18rem;
+  height: 28rem;
   margin: 1rem 1.5rem;
-  width: 17rem;
   background: #8f499c;
   border: 10px solid #ffff;
-  @media (max-width: 580px) {
-    width: 5rem;
-    height: 10rem;
-  }
   @media (max-width: 860px) {
     width: 15rem;
-    height: 20rem;
-  }
-  @media (max-width: 1480px) {
-    width: 20rem;
-    height: 30rem;
+    height: 21rem;
+    border: 5px solid #ffff;
   }
   @media (min-width: 1880px) {
     width: 25rem;
@@ -200,22 +189,15 @@ const BottleWrapTwo = styled.div`
 `;
 
 const BottleWrapThree = styled.div`
-  height: 25rem;
-  width: 17rem;
+  width: 18rem;
+  height: 28rem;
   background: #0082c6;
   margin: 1.5rem 0;
   border: 10px solid #ffff;
-  @media (max-width: 580px) {
-    width: 5rem;
-    height: 10rem;
-  }
   @media (max-width: 860px) {
     width: 15rem;
-    height: 20rem;
-  }
-  @media (max-width: 1480px) {
-    width: 20rem;
-    height: 30rem;
+    height: 21rem;
+    border: 5px solid #ffff;
   }
   @media (min-width: 1880px) {
     width: 25rem;
@@ -226,6 +208,10 @@ const BottleWrapThree = styled.div`
 const BottlesOne = styled.img`
   width: 8rem;
   margin-top: 30%;
+  @media (max-width: 860px) {
+    width: 6rem;
+    margin-top: 20%;
+  }
   @media (min-width: 1480px) {
     width: 12rem;
   }
@@ -234,6 +220,10 @@ const BottlesOne = styled.img`
 const BottlesTwo = styled.img`
   width: 8rem;
   margin-top: 30%;
+  @media (max-width: 860px) {
+    width: 6rem;
+    margin-top: 20%;
+  }
   @media (min-width: 1480px) {
     width: 12rem;
   }
@@ -242,6 +232,10 @@ const BottlesTwo = styled.img`
 const BottlesThree = styled.img`
   width: 8rem;
   margin-top: 30%;
+  @media (max-width: 860px) {
+    width: 6rem;
+    margin-top: 20%;
+  }
   @media (min-width: 1480px) {
     width: 12rem;
   }

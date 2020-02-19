@@ -14,7 +14,9 @@ const Footer = () => {
         </Link>
 
         <Link to="faqs" style={{ textDecoration: "none" }}>
-          <Text style={{ marginLeft: "2rem", marginRight: "3rem" }}>FAQS</Text>
+          <Text style={{ marginLeft: "0.5rem", marginRight: "3rem" }}>
+            FAQS
+          </Text>
         </Link>
       </div>
     </Wrap>
@@ -49,6 +51,6 @@ const Text = styled.span`
     font-size: 0.5rem;
   }
   @media (max-width: 580px) {
-    font-size: 0.25rem;
+    font-size: 0.1rem;
   }
 `;

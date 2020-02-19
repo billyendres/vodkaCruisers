@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "vodka-cruiser",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Vodka Cruiser",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -23,6 +23,7 @@
     "@mdi/react": "^1.2.1",
     "antd": "^3.26.7",
     "date-fns": "^2.9.0",
+    "froala-editor": "^3.1.1",
     "gatsby": "^2.18.12",
     "gatsby-plugin-antd": "^2.1.0",
     "gatsby-plugin-material-ui": "^2.1.6",
@@ -40,12 +41,5 @@
   },
   "devDependencies": {
     "prettier": "^1.19.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

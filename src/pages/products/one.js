@@ -102,6 +102,9 @@ const Background = styled.img`
   margin-top: 3rem;
   position: absolute;
   left: 2%;
+  @media (max-width: 680px) {
+    display: none;
+  }
 `;
 
 const TextWrap = styled.div`
@@ -145,10 +148,10 @@ const BodyWrap = styled.div`
   justify-content: center;
   margin: 0 10rem;
   @media (max-width: 820px) {
-    margin: 0 5rem;
+    margin: 0 4.5rem;
   }
-  @media (max-width: 560px) {
-    margin: 0 3rem;
+  @media (max-width: 680px) {
+    margin: 0;
   }
   @media (min-width: 2080px) {
     margin: 0 17rem;
