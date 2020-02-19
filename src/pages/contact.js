@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/contact";
@@ -28,6 +28,14 @@ export default () => (
     render={({ craft }) => {
       const contactPage = craft.entries[0];
       const { contactBody, contactMessage, socials, title } = contactPage;
+
+      const [firstName, setFirstName] = useState("");
+      const [lastName, setLastName] = useState("");
+      const [email, setEmail] = useState("");
+      const [query, setQuery] = useState("");
+      const [dropdown, setDropdown] = useState("I am the first!");
+      const dropdownlist = ["item1", "item2", "item3"];
+
       return (
         <Layout>
           <FadeIn>
@@ -49,11 +57,33 @@ export default () => (
               <InputWrap>
                 <Zoom bottom>
                   <form>
-                    <Input type="text" name="First Name" value="First Name*" />
-                    <Input type="text" name="Last Name" value="Last Name*" />
-                    <Input type="text" name="Your Email" value="Your Email*" />
+                    <Input
+                      type="text"
+                      placeholder="First Name*"
+                      value={firstName}
+                      onChange={e => setFirstName(e.target.value)}
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Last Name*"
+                      value={lastName}
+                      onChange={e => setLastName(e.target.value)}
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Your Email*"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                    />
                     <Select>
-                      <Option value="Subject">Subject</Option>
+                      <Option
+                        placeholder="Subject"
+                        value={dropdown}
+                        onChange={e => setDropdown(e.target.value)}
+                      >
+                        Subject
+                      </Option>
+                      {console.log(dropdown)}
                       <Option value="saab">One</Option>
                       <Option value="mercedes">Two</Option>
                       <Option value="audi">Three</Option>
@@ -61,8 +91,9 @@ export default () => (
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <InputLarge
                         type="text"
-                        name="I'd like to..."
-                        value="I'd like to..."
+                        placeholder="I'd like to..."
+                        value={query}
+                        onChange={e => setQuery(e.target.value)}
                       />
                     </div>
                   </form>
@@ -81,13 +112,9 @@ export default () => (
                     marginTop: "1rem",
                   }}
                 >
-                  <img src={facebook} alt={facebook} />
-                  <img
-                    style={{ width: "1.75rem", margin: "1rem" }}
-                    src={youtube}
-                    alt={youtube}
-                  />
-                  <img src={insta} alt={insta} />
+                  <Facebook src={facebook} alt={facebook} />
+                  <Youtube src={youtube} alt={youtube} />
+                  <Insta src={insta} alt={insta} />
                 </div>
               </Zoom>
             </div>
@@ -175,7 +202,6 @@ const InputWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   @media (max-width: 1203px) {
     margin-top: 7.5rem;
   }
@@ -241,8 +267,7 @@ const InputLarge = styled.input`
   margin-top: 2px;
   outline: none;
   border: 1px solid #3c3c3c;
-
-  @media (max-width: 1203px) {
+  @media (max-width: 1200px) {
     height: 5rem;
   }
   @media (max-width: 830px) {
@@ -279,5 +304,24 @@ const Button = styled.button`
     margin-top: 10rem;
     margin-left: 0;
     margin-right: 0;
+  }
+`;
+
+const Facebook = styled.img`
+  @media (min-width: 1800px) {
+    width: 1.25rem;
+  }
+`;
+
+const Youtube = styled.img`
+  width: 1.75rem;
+  margin: 1rem;
+  @media (min-width: 1800px) {
+    width: 3rem;
+  }
+`;
+const Insta = styled.img`
+  @media (min-width: 1800px) {
+    width: 2.5rem;
   }
 `;

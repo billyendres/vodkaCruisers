@@ -60,7 +60,7 @@ const Header = styled.h1`
   font-size: 3em;
   line-height: 120%;
   letter-spacing: 0.02em;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   color: #f15a22;
 `;
 

@@ -146,7 +146,7 @@ const Body = styled.div`
 const BodyWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 10rem;
+  margin: 0 11rem;
   @media (max-width: 820px) {
     margin: 0 4.5rem;
   }

@@ -112,7 +112,7 @@ const Background = styled.img`
 `;
 
 const TextWrap = styled.div`
-  width: 15rem;
+  width: 13rem;
   @media (min-width: 1480px) {
     width: 30rem;
   }

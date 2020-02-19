@@ -1,26 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import Layout from "../Layout/BurgerMenu";
 
 const Menu = ({ open }) => {
   return (
-    <StyledMenu open={open}>
-      <Link to="/home" style={{ textDecoration: "none" }}>
-        <Text>Home</Text>
-      </Link>
-      <Link to="/about" style={{ textDecoration: "none" }}>
-        <Text>About</Text>
-      </Link>
-      <Link to="/products/one" style={{ textDecoration: "none" }}>
-        <Text>Products</Text>
-      </Link>
-      <Link to="/promotions/one" style={{ textDecoration: "none" }}>
-        <Text>Promotions</Text>
-      </Link>
-      <Link to="/contact" style={{ textDecoration: "none" }}>
-        <Text>Contact</Text>
-      </Link>
-    </StyledMenu>
+    <Layout>
+      <StyledMenu open={open}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
+          <Text>Home</Text>
+        </Link>
+        <Link to="/about" style={{ textDecoration: "none" }}>
+          <Text>About</Text>
+        </Link>
+        <Link to="/products/one" style={{ textDecoration: "none" }}>
+          <Text>Products</Text>
+        </Link>
+        <Link to="/promotions/one" style={{ textDecoration: "none" }}>
+          <Text>Promotions</Text>
+        </Link>
+        <Link to="/contact" style={{ textDecoration: "none" }}>
+          <Text>Contact</Text>
+        </Link>
+      </StyledMenu>
+    </Layout>
   );
 };
 
@@ -54,6 +57,6 @@ const Text = styled.div`
   text-decoration: none;
   transition: color 0.3s linear;
   text-align: center;
-  font-family: Avenir;
+  font-family: "Avenir" sans-serif;
   border: none;
 `;

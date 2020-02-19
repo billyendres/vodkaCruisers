@@ -37,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100%;
     font-size: 1rem;
-    font-family: 'Avenir';
+    font-family: 'Avenir', sans-serif;
     @font-face {
     font-family: 'Avenir';
     src: url(${Avenir});
