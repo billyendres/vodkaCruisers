@@ -83,7 +83,10 @@ const AgeRestriction = () => {
           <Header>Please verify your age</Header>
         </div>
         <form style={{ width: "100%" }}>
-          <BoxWrap onClick={() => setDayDisplay(false)}>
+          <BoxWrap
+            onMouseEnter={() => setDayDisplay(false)}
+            onFocusCapture={() => setDayDisplay(false)}
+          >
             <Day
               src={dayImg}
               alt={dayImg}
@@ -96,7 +99,10 @@ const AgeRestriction = () => {
               onChange={handleDayChange}
             />
           </BoxWrap>
-          <BoxWrap onClick={() => setMonthDisplay(false)}>
+          <BoxWrap
+            onMouseEnter={() => setMonthDisplay(false)}
+            onFocusCapture={() => setMonthDisplay(false)}
+          >
             <Month
               src={monthImg}
               alt={monthImg}
@@ -109,7 +115,10 @@ const AgeRestriction = () => {
               onChange={handleMonthChange}
             />
           </BoxWrap>
-          <BoxWrap onClick={() => setYearDisplay(false)}>
+          <BoxWrap
+            onMouseEnter={() => setYearDisplay(false)}
+            onFocusCapture={() => setYearDisplay(false)}
+          >
             <Year
               src={yearImg}
               alt={yearImg}
@@ -122,7 +131,10 @@ const AgeRestriction = () => {
               onChange={handleYearChange}
             />
           </BoxWrap>
-          <BoxWrapSelect onClick={() => setCountryDisplay(false)}>
+          <BoxWrapSelect
+            onMouseEnter={() => setCountryDisplay(false)}
+            onFocusCapture={() => setCountryDisplay(false)}
+          >
             <Country
               src={countryImg}
               alt={countryImg}
@@ -169,22 +181,13 @@ const Day = styled.img`
   position: absolute;
   padding-left: 8.5rem;
   z-index: 1000;
-  :hover {
-    width: 15rem;
-  }
   @media (max-width: 620px) {
     width: 8rem;
     padding-left: 4.5rem;
-    :hover {
-      width: 8.25rem;
-    }
   }
   @media (min-width: 1800px) {
     width: 21rem;
     padding-left: 12rem;
-    :hover {
-      width: 22rem;
-    }
   }
 `;
 
@@ -193,22 +196,13 @@ const Month = styled.img`
   position: absolute;
   padding-left: 8.5rem;
   z-index: 1000;
-  :hover {
-    width: 15rem;
-  }
   @media (max-width: 620px) {
     width: 8rem;
     padding-left: 4.5rem;
-    :hover {
-      width: 8.25rem;
-    }
   }
   @media (min-width: 1800px) {
     width: 21rem;
     padding-left: 12rem;
-    :hover {
-      width: 22rem;
-    }
   }
 `;
 
@@ -217,22 +211,13 @@ const Year = styled.img`
   position: absolute;
   padding-left: 5rem;
   z-index: 1000;
-  :hover {
-    width: 21rem;
-  }
   @media (max-width: 620px) {
     width: 10rem;
     padding-left: 2.5rem;
-    :hover {
-      width: 10.25rem;
-    }
   }
   @media (min-width: 1800px) {
     width: 29rem;
     padding-left: 9rem;
-    :hover {
-      width: 30rem;
-    }
   }
 `;
 
@@ -241,24 +226,15 @@ const Country = styled.img`
   position: absolute;
   z-index: 1000;
   margin-left: -3rem;
-  :hover {
-    width: 26rem;
-  }
   @media (max-width: 780px) {
     margin-left: -12rem;
   }
   @media (max-width: 620px) {
     width: 12.5rem;
     margin-left: -1rem;
-    :hover {
-      width: 13rem;
-    }
   }
   @media (min-width: 1800px) {
     width: 31.5rem;
-    :hover {
-      width: 32.5rem;
-    }
   }
 `;
 

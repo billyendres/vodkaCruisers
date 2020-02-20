@@ -1,7 +1,5 @@
 import React from "react";
 import AgeRestriction from "./ageRestriction";
-const App = () => {
-  return <AgeRestriction />;
-};
+const App = () => <AgeRestriction />;
 
 export default App;

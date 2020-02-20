@@ -43,7 +43,6 @@ const Background = styled.img`
   height: 100vh;
   position: absolute;
   @media (max-width: 820px) {
-    /* display: none; */
     width: 140vw;
     height: 100vh;
   }

@@ -34,7 +34,6 @@ export default () => (
       const [email, setEmail] = useState("");
       const [query, setQuery] = useState("");
       const [dropdown, setDropdown] = useState("I am the first!");
-      const dropdownlist = ["item1", "item2", "item3"];
 
       return (
         <Layout>
@@ -246,9 +245,7 @@ const Select = styled.select`
   margin-bottom: 2rem;
 `;
 
-const Option = styled.option`
-  /* padding: 1rem 1rem; */
-`;
+const Option = styled.option``;
 
 const InputLarge = styled.input`
   font-family: Avenir;

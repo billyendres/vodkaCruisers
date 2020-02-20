@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import facebook from "./images/facebook.svg";
-import youtube from "./images/youtube.svg";
 import insta from "./images/insta.svg";
-import en from "./images/en.svg";
 
 const Sidebar = () => {
   return (
@@ -76,23 +74,7 @@ const FacebookIcon = styled.img`
   }
 `;
 
-const YoutubeIcon = styled.img`
-  width: 2.5rem;
-  margin: 1rem 0;
-  @media (max-width: 830px) {
-    width: 1.75rem;
-    margin: 0.75rem 0;
-  }
-`;
-
 const InstaIcon = styled.img`
-  width: 2.5rem;
-  @media (max-width: 830px) {
-    width: 1.75rem;
-  }
-`;
-
-const EnIcon = styled.img`
   width: 2.5rem;
   @media (max-width: 830px) {
     width: 1.75rem;

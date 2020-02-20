@@ -3175,7 +3175,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-class@^15.5.3:
+create-react-class@^15.5.2, create-react-class@^15.5.3:
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
   integrity sha512-M+/3Q6E6DLO6Yx3OwrWjwHBnvfXXYA7W+dFjt/ZDBemHO1DDZhsalX/NUtnTYclN6GfnBDRh4qRHjcDHmlJBJg==
@@ -4798,6 +4798,11 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+
+froala-editor@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/froala-editor/-/froala-editor-3.1.0.tgz#d05922abad32ae14a4bd5424a7451636554c5892"
+  integrity sha512-U5G4GIzKstl6dJJi3gvnKT5UHs5ef2/Qn9Q3sjXudQ1S+rno6mV5Je78YYrK02LBOskLkIZ06WijyetzBy68XQ==
 
 froala-editor@^3.1.1:
   version "3.1.1"
@@ -9336,6 +9341,14 @@ react-fade-in@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/react-fade-in/-/react-fade-in-0.1.8.tgz#f7289b4a26b0ee91768521d408a0fca59cfcab3f"
   integrity sha512-kHQ3gez6Cplh0KsZq0YAaYGaF3tEePMT/jxe8DDPiFAtJCrSe9K62WC3ODTza2RYH+OcNL/equmCKdqw+ype8g==
+
+react-froala-wysiwyg@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-froala-wysiwyg/-/react-froala-wysiwyg-3.1.0.tgz#136c170bd1bbede9b260f95eecbe3a2072990dae"
+  integrity sha512-o0WSGb2bFVwUm/W+VYGwiySz0wsj5QAw+red/2AfZX8EYiSj0colAMneJ/KvTI8DiDRjM0EAraVC1KBpEOljsw==
+  dependencies:
+    create-react-class "^15.5.2"
+    froala-editor "3.1.0"
 
 react-hot-loader@^4.12.18:
   version "4.12.19"

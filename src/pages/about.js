@@ -2,7 +2,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/about";
 import styled from "styled-components";
-import deck from "./images/deck.png";
+import deck from "./images/deck.svg";
 import FadeIn from "react-fade-in";
 import Bounce from "react-reveal/Bounce";
 
