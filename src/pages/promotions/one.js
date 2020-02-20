@@ -120,7 +120,7 @@ const Background = styled.img`
   height: 83.5vh;
   margin-top: 3rem;
   position: absolute;
-  left: 2%;
+  left: 0;
 `;
 
 const ImageWrap = styled.div`

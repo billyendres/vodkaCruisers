@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import posed from "react-pose";
 import background from "../../components/Layout/products/images/backgroundThree.png";
-import bottles from "../../components/Layout/products/images/bottlesTwo.png";
+import bottles from "../../components/Layout/products/images/core.png";
 import Layout from "../../components/Layout/products/productsThree";
 import Icon from "@mdi/react";
 import { mdiChevronLeft } from "@mdi/js";
@@ -150,9 +150,9 @@ const Body = styled.div`
 const BodyWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 10rem;
-  @media (max-width: 820px) {
-    margin: 0 4rem;
+  margin: 0 13rem;
+  @media (max-width: 1000px) {
+    margin: 0 8rem;
   }
   @media (max-width: 680px) {
     margin: 0;
@@ -163,14 +163,10 @@ const BodyWrap = styled.div`
 `;
 
 const Bottles = styled.img`
-  width: 28rem;
+  width: 9rem;
   margin-bottom: 1rem;
-  margin-top: 3rem;
-
-  @media (max-width: 820px) {
-    width: 20rem;
-  }
+  margin-top: 2rem;
   @media (min-width: 2280px) {
-    width: 35rem;
+    width: 15rem;
   }
 `;

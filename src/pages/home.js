@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FadeIn from "react-fade-in";
 import Layout from "../components/Layout/home";
-import background from "../components/Layout/home/images/background.png";
+import background from "../components/Layout/home/images/homePage.png";
 import Fade from "react-reveal/Fade";
 
 const HomePage = () => {
@@ -39,10 +39,10 @@ const Wrap = styled.div`
 
 const Background = styled.img`
   top: 1rem;
-  width: 100vw;
+  width: 115vw;
   height: 100vh;
   position: absolute;
-  @media (max-width: 480px) {
+  @media (max-width: 820px) {
     display: none;
   }
 `;
@@ -67,13 +67,10 @@ const Header = styled.h1`
   @media (max-width: 1350px) {
     font-size: 3em;
   }
-  @media (max-width: 1160px) {
-    font-size: 2.5em;
-  }
   @media (max-width: 820px) {
     font-size: 2em;
   }
-  @media (max-width: 680px) {
+  @media (max-width: 480px) {
     font-size: 1.5em;
   }
 `;

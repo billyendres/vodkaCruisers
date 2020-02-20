@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    background-color: #243a76;
+    background-color: #041241;
     position: relative;
     font-size: 1rem;
     margin: 0;

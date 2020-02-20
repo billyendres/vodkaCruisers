@@ -13,7 +13,6 @@ const AgeRestriction = () => {
   const [day, setDay] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
-  const [country, setCountry] = useState();
   const [dayDisplay, setDayDisplay] = useState(true);
   const [monthDisplay, setMonthDisplay] = useState(true);
   const [yearDisplay, setYearDisplay] = useState(true);
@@ -22,6 +21,32 @@ const AgeRestriction = () => {
   const age = moment().format("YYYY") - year;
 
   console.log(parseFloat(moment().format("YYYY")));
+
+  const countries = [
+    "USA",
+    "Canada",
+    "Spain",
+    "Portugal",
+    "France",
+    "UK",
+    "Ireland",
+    "Luxembourg",
+    "Belgium",
+    "Netherlands",
+    "Germany",
+    "Switzerland",
+    "Italy",
+    "Austria",
+    "Norway",
+    "Denmark",
+    "Iceland",
+    "Sweden",
+    "Finland",
+    "Japan",
+    "SouthKorea",
+    "New Zealand",
+    "Greece",
+  ];
 
   const handleDayChange = e => {
     if (day < 0 || day > 31) {
@@ -104,16 +129,12 @@ const AgeRestriction = () => {
               style={{ display: countryDisplay ? "" : "none" }}
             />
             <Select>
-              <Option
-              // placeholder="Subject"
-              // value={dropdown}
-              // onChange={e => setDropdown(e.target.value)}
-              >
-                {countryDisplay ? "" : "Australia"}
-              </Option>
-              <Option value="saab">One</Option>
-              <Option value="mercedes">Two</Option>
-              <Option value="audi">Three</Option>
+              <Option>{countryDisplay ? "" : "Australia"}</Option>
+              {countries.map((country, i) => (
+                <Option index={i} value={country}>
+                  {country}
+                </Option>
+              ))}
             </Select>
           </BoxWrapSelect>
         </form>
@@ -219,7 +240,7 @@ const Country = styled.img`
   width: 25rem;
   position: absolute;
   z-index: 1000;
-  margin-left: -8rem;
+  margin-left: -3rem;
   :hover {
     width: 26rem;
   }
@@ -227,11 +248,11 @@ const Country = styled.img`
     margin-left: -12rem;
   }
   @media (max-width: 620px) {
-    width: 12rem;
-    margin-left: -3.5rem;
-  }
-  :hover {
     width: 12.5rem;
+    margin-left: -1rem;
+    :hover {
+      width: 13rem;
+    }
   }
   @media (min-width: 1800px) {
     width: 31.5rem;

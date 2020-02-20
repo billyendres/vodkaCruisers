@@ -102,10 +102,11 @@ const Wrap = styled.div`
 
 const Background = styled.img`
   width: 100%;
-  height: 90vh;
+  height: 94vh;
   margin-top: 3rem;
   position: absolute;
   left: 2%;
+  top: -7vh;
   @media (max-width: 680px) {
     display: none;
   }
@@ -150,9 +151,9 @@ const Body = styled.div`
 const BodyWrap = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 11rem;
-  @media (max-width: 820px) {
-    margin: 0 6rem;
+  margin: 0 12rem;
+  @media (max-width: 1000px) {
+    margin: 0 8rem;
   }
   @media (max-width: 680px) {
     margin: 0;
@@ -165,7 +166,7 @@ const BodyWrap = styled.div`
 const Bottles = styled.img`
   width: 28rem;
   margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 
   @media (max-width: 820px) {
     width: 20rem;
