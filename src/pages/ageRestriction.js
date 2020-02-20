@@ -7,14 +7,17 @@ import Avenir from "../components/Layout/fonts/AvenirLTStd.otf";
 import dayImg from "./images/day.svg";
 import monthImg from "./images/month.svg";
 import yearImg from "./images/year.svg";
+import countryImg from "./images/country.svg";
 
 const AgeRestriction = () => {
   const [day, setDay] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
+  const [country, setCountry] = useState();
   const [dayDisplay, setDayDisplay] = useState(true);
   const [monthDisplay, setMonthDisplay] = useState(true);
   const [yearDisplay, setYearDisplay] = useState(true);
+  const [countryDisplay, setCountryDisplay] = useState(true);
 
   const age = moment().format("YYYY") - year;
 
@@ -94,6 +97,25 @@ const AgeRestriction = () => {
               onChange={handleYearChange}
             />
           </BoxWrap>
+          <BoxWrapSelect onClick={() => setCountryDisplay(false)}>
+            <Country
+              src={countryImg}
+              alt={countryImg}
+              style={{ display: countryDisplay ? "" : "none" }}
+            />
+            <Select>
+              <Option
+              // placeholder="Subject"
+              // value={dropdown}
+              // onChange={e => setDropdown(e.target.value)}
+              >
+                {countryDisplay ? "" : "Australia"}
+              </Option>
+              <Option value="saab">One</Option>
+              <Option value="mercedes">Two</Option>
+              <Option value="audi">Three</Option>
+            </Select>
+          </BoxWrapSelect>
         </form>
         {age >= 18 ? (
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -118,7 +140,7 @@ const Wrap = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10vh;
+  margin-top: 5vh;
 `;
 
 const Day = styled.img`
@@ -193,6 +215,32 @@ const Year = styled.img`
   }
 `;
 
+const Country = styled.img`
+  width: 25rem;
+  position: absolute;
+  z-index: 1000;
+  margin-left: -8rem;
+  :hover {
+    width: 26rem;
+  }
+  @media (max-width: 780px) {
+    margin-left: -12rem;
+  }
+  @media (max-width: 620px) {
+    width: 12rem;
+    margin-left: -3.5rem;
+  }
+  :hover {
+    width: 12.5rem;
+  }
+  @media (min-width: 1800px) {
+    width: 31.5rem;
+    :hover {
+      width: 32.5rem;
+    }
+  }
+`;
+
 const Logo = styled.img`
   @media (max-width: 620px) {
     width: 6rem;
@@ -252,6 +300,49 @@ const Input = styled.input`
   }
   @media (min-width: 1800px) {
     font-size: 3rem;
+  }
+`;
+
+const Select = styled.select`
+  font-style: normal;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  color: grey;
+  outline: none;
+  border: none;
+  text-align: center;
+  @media (max-width: 620px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1800px) {
+    font-size: 3rem;
+  }
+`;
+
+const BoxWrapSelect = styled.div`
+  background: #ffff;
+  border: 8px solid #44c8f5;
+  padding: 2rem 15rem;
+  padding-bottom: 2.5rem;
+  margin: 1rem 4.5rem;
+  @media (max-width: 620px) {
+    padding: 1rem 0;
+    margin: 0.5rem 3rem;
+    border: 4px solid #44c8f5;
+  }
+  @media (min-width: 1800px) {
+    border: 10px solid #44c8f5;
+    margin: 1.5rem 21rem;
+  }
+`;
+
+const Option = styled.option`
+  @media (min-width: 1800px) {
+    font-size: 1rem;
   }
 `;
 
