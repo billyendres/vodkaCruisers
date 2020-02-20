@@ -143,7 +143,7 @@ const AgeRestriction = () => {
             <Select>
               <Option>{countryDisplay ? "" : "Australia"}</Option>
               {countries.map((country, i) => (
-                <Option index={i} value={country}>
+                <Option key={i} value={country}>
                   {country}
                 </Option>
               ))}
@@ -225,7 +225,7 @@ const Country = styled.img`
   width: 25rem;
   position: absolute;
   z-index: 1000;
-  margin-left: -3rem;
+  margin-left: -4rem;
   @media (max-width: 780px) {
     margin-left: -12rem;
   }
@@ -309,9 +309,12 @@ const Select = styled.select`
   text-transform: uppercase;
   position: relative;
   color: grey;
+  background: #ffff;
   outline: none;
   border: none;
   text-align: center;
+  appearance: none;
+
   @media (max-width: 620px) {
     font-size: 1rem;
   }

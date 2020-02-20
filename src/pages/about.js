@@ -73,7 +73,7 @@ const Header = styled.h1`
 const Paragraph = styled.p`
   font-style: normal;
   font-weight: 500;
-  font-size: 1.25em;
+  font-size: 1.125em;
   line-height: 150%;
   letter-spacing: 0.05em;
   color: #2c004b;
