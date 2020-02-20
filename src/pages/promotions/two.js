@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link, StaticQuery, graphql } from "gatsby";
 import FadeIn from "react-fade-in";
 import Layout from "../../components/Layout/promotions/promotionsGreen";
-import backgroundGreen from "../../components/Layout/promotions/images/backgroundGreen.png";
+import backgroundGreen from "../../components/Layout/promotions/images/greenGroup.png";
 import LightSpeed from "react-reveal/LightSpeed";
 import Icon from "@mdi/react";
 import { mdiChevronLeft } from "@mdi/js";

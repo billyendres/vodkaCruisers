@@ -4,11 +4,17 @@ import styled, { createGlobalStyle } from "styled-components";
 import logo from "./images/logo.svg";
 import moment from "moment";
 import Avenir from "../components/Layout/fonts/AvenirLTStd.otf";
+import dayImg from "./images/day.svg";
+import monthImg from "./images/month.svg";
+import yearImg from "./images/year.svg";
 
 const AgeRestriction = () => {
   const [day, setDay] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
+  const [dayDisplay, setDayDisplay] = useState(true);
+  const [monthDisplay, setMonthDisplay] = useState(true);
+  const [yearDisplay, setYearDisplay] = useState(true);
 
   const age = moment().format("YYYY") - year;
 
@@ -49,27 +55,42 @@ const AgeRestriction = () => {
           <Header>Please verify your age</Header>
         </div>
         <form style={{ width: "100%" }}>
-          <BoxWrap>
+          <BoxWrap onClick={() => setDayDisplay(false)}>
+            <Day
+              src={dayImg}
+              alt={dayImg}
+              style={{ display: dayDisplay ? "" : "none" }}
+            />
             <Input
               type="number"
               value={day}
-              placeholder="DD"
+              placeholder={dayDisplay ? "" : "DD"}
               onChange={handleDayChange}
             />
           </BoxWrap>
-          <BoxWrap>
+          <BoxWrap onClick={() => setMonthDisplay(false)}>
+            <Month
+              src={monthImg}
+              alt={monthImg}
+              style={{ display: monthDisplay ? "" : "none" }}
+            />
             <Input
               type="number"
               value={month}
-              placeholder="MM"
+              placeholder={monthDisplay ? "" : "MM"}
               onChange={handleMonthChange}
             />
           </BoxWrap>
-          <BoxWrap>
+          <BoxWrap onClick={() => setYearDisplay(false)}>
+            <Year
+              src={yearImg}
+              alt={yearImg}
+              style={{ display: yearDisplay ? "" : "none" }}
+            />
             <Input
               type="number"
               value={year}
-              placeholder="YYYY"
+              placeholder={yearDisplay ? "" : "YYYY"}
               onChange={handleYearChange}
             />
           </BoxWrap>
@@ -100,7 +121,77 @@ const Wrap = styled.div`
   margin-top: 10vh;
 `;
 
-const Day = styled.img``;
+const Day = styled.img`
+  width: 14.5rem;
+  position: absolute;
+  padding-left: 8.5rem;
+  z-index: 1000;
+  :hover {
+    width: 15rem;
+  }
+  @media (max-width: 620px) {
+    width: 8rem;
+    padding-left: 4.5rem;
+    :hover {
+      width: 8.25rem;
+    }
+  }
+  @media (min-width: 1800px) {
+    width: 21rem;
+    padding-left: 12rem;
+    :hover {
+      width: 22rem;
+    }
+  }
+`;
+
+const Month = styled.img`
+  width: 14.5rem;
+  position: absolute;
+  padding-left: 8.5rem;
+  z-index: 1000;
+  :hover {
+    width: 15rem;
+  }
+  @media (max-width: 620px) {
+    width: 8rem;
+    padding-left: 4.5rem;
+    :hover {
+      width: 8.25rem;
+    }
+  }
+  @media (min-width: 1800px) {
+    width: 21rem;
+    padding-left: 12rem;
+    :hover {
+      width: 22rem;
+    }
+  }
+`;
+
+const Year = styled.img`
+  width: 20rem;
+  position: absolute;
+  padding-left: 5rem;
+  z-index: 1000;
+  :hover {
+    width: 21rem;
+  }
+  @media (max-width: 620px) {
+    width: 10rem;
+    padding-left: 2.5rem;
+    :hover {
+      width: 10.25rem;
+    }
+  }
+  @media (min-width: 1800px) {
+    width: 29rem;
+    padding-left: 9rem;
+    :hover {
+      width: 30rem;
+    }
+  }
+`;
 
 const Logo = styled.img`
   @media (max-width: 620px) {
@@ -131,6 +222,7 @@ const BoxWrap = styled.div`
   border: 8px solid #44c8f5;
   display: inline-block;
   padding: 2rem 0;
+  padding-bottom: 2.5rem;
   margin: 1rem 1rem;
   @media (max-width: 620px) {
     padding: 1rem 0;
@@ -150,6 +242,7 @@ const Input = styled.input`
   line-height: 130%;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  position: relative;
   color: grey;
   outline: none;
   border: none;
@@ -186,6 +279,7 @@ const Button = styled.button`
   @media (min-width: 1800px) {
     padding: 3rem 10rem;
     margin-top: 2rem;
+    font-size: 2rem;
   }
 `;
 
@@ -208,9 +302,8 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
     font-family: 'Avenir';
     @font-face {
-    font-family: 'Avenir';
-    src: url(${Avenir});
+      font-family: 'Avenir';
+      src: url(${Avenir});
+    }
   }
-
-  }
-  `;
+`;
