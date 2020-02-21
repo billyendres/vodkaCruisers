@@ -45,6 +45,8 @@ export default () => (
     `}
     render={({ craft }) => {
       const productsPageOne = craft.entries[7];
+      // const productsPageAssets = craft.assets
+      // console.log(craft.assets[0].path);
       const { title, productDescription, header } = productsPageOne;
       return (
         <Layout>
@@ -76,6 +78,7 @@ export default () => (
               </BodyWrap>
               <Box>
                 <Fade bottom>
+                  {/* {craft.assets[2].path} */}
                   <Bottles src={bottles} alt={bottles} />
                 </Fade>
               </Box>

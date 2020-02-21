@@ -75,8 +75,8 @@ const FacebookIcon = styled.img`
 `;
 
 const InstaIcon = styled.img`
-  width: 2.5rem;
+  width: 2.9rem;
   @media (max-width: 830px) {
-    width: 1.75rem;
+    width: 2.05rem;
   }
 `;

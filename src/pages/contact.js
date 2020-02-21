@@ -88,8 +88,6 @@ export default () => (
                       <Option value="mercedes">Two</Option>
                       <Option value="audi">Three</Option>
                     </Select>
-                    {/* </form>
-                    <form> */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <InputLarge
                         type="text"
@@ -114,8 +112,20 @@ export default () => (
                     marginTop: "1rem",
                   }}
                 >
-                  <Facebook src={facebook} alt={facebook} />
-                  <Insta src={insta} alt={insta} />
+                  <a
+                    href="https://www.facebook.com/vodkacruiser"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Facebook src={facebook} alt={facebook} />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/vodkacruiser/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Insta src={insta} alt={insta} />
+                  </a>
                 </div>
               </Zoom>
             </div>
