@@ -11,6 +11,7 @@ import { mdiChevronLeft } from "@mdi/js";
 import { mdiChevronRight } from "@mdi/js";
 import FadeIn from "react-fade-in";
 import Fade from "react-reveal/Fade";
+import Markdown from "markdown-to-jsx";
 
 const Box = posed.div({
   hoverable: true,
@@ -68,7 +69,9 @@ export default () => (
               </TextWrap>
               <BodyWrap>
                 <Fade top>
-                  <Body>{productDescription}</Body>
+                  <Body>
+                    <Markdown>{productDescription}</Markdown>
+                  </Body>
                 </Fade>
               </BodyWrap>
               <Box>

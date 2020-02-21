@@ -8,6 +8,7 @@ import LightSpeed from "react-reveal/LightSpeed";
 import Icon from "@mdi/react";
 import { mdiChevronLeft } from "@mdi/js";
 import { mdiChevronRight } from "@mdi/js";
+import Markdown from "markdown-to-jsx";
 
 export default () => (
   <StaticQuery
@@ -79,7 +80,9 @@ export default () => (
                 </Block>
                 <OverFlow>
                   <LightSpeed right>
-                    <OverflowText>{promotionsThreeContent}</OverflowText>
+                    <OverflowText>
+                      <Markdown>{promotionsThreeContent}</Markdown>
+                    </OverflowText>
                   </LightSpeed>
                 </OverFlow>
               </TextWrap>

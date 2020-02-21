@@ -10,6 +10,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import FadeIn from "react-fade-in";
+import Markdown from "markdown-to-jsx";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -109,7 +110,7 @@ export default () => (
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <Typography className={classes.text}>
-                        {dropdownOneBody}
+                        <Markdown>{dropdownOneBody}</Markdown>
                       </Typography>
                     </ExpansionPanelDetails>
                   </ExpansionPanel>

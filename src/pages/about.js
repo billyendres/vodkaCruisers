@@ -5,6 +5,7 @@ import styled from "styled-components";
 import deck from "./images/deck.svg";
 import FadeIn from "react-fade-in";
 import Bounce from "react-reveal/Bounce";
+import Markdown from "markdown-to-jsx";
 
 export default () => (
   <StaticQuery
@@ -33,7 +34,9 @@ export default () => (
                 <Header>{title}</Header>
               </Bounce>
               <Bounce top>
-                <Paragraph>{aboutPageContent}</Paragraph>
+                <Paragraph>
+                  <Markdown>{aboutPageContent}</Markdown>
+                </Paragraph>
               </Bounce>
               <Bounce bottom>
                 <Image src={deck} alt={deck} />

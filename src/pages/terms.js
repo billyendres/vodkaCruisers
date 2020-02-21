@@ -4,6 +4,7 @@ import Layout from "../components/Layout/terms";
 import styled from "styled-components";
 import FadeIn from "react-fade-in";
 import Flip from "react-reveal/Flip";
+import Markdown from "markdown-to-jsx";
 
 export default () => (
   <StaticQuery
@@ -31,7 +32,9 @@ export default () => (
                 <Header>{title}</Header>
               </Flip>
               <Flip top>
-                <Body>{termsPageContent}</Body>
+                <Body>
+                  <Markdown>{termsPageContent}</Markdown>
+                </Body>
               </Flip>
             </Wrap>
           </FadeIn>

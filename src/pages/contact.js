@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/contact";
-import youtube from "../components/Layout/contact/images/youtube.svg";
 import facebook from "../components/Layout/contact/images/facebook.svg";
 import insta from "../components/Layout/contact/images/insta.svg";
 import FadeIn from "react-fade-in";
 import Zoom from "react-reveal/Zoom";
+import Markdown from "markdown-to-jsx";
 
 export default () => (
   <StaticQuery
@@ -28,7 +28,6 @@ export default () => (
     render={({ craft }) => {
       const contactPage = craft.entries[0];
       const { contactMessage, socials, title, contactBody } = contactPage;
-
       const [firstName, setFirstName] = useState("");
       const [lastName, setLastName] = useState("");
       const [email, setEmail] = useState("");
@@ -51,7 +50,9 @@ export default () => (
               </Wrap>
               <Zoom bottom>
                 <Line />
-                <Message>{contactMessage}</Message>
+                <Message>
+                  <Markdown>{contactMessage}</Markdown>
+                </Message>
               </Zoom>
               <InputWrap>
                 <Zoom bottom>
@@ -87,6 +88,8 @@ export default () => (
                       <Option value="mercedes">Two</Option>
                       <Option value="audi">Three</Option>
                     </Select>
+                    {/* </form>
+                    <form> */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <InputLarge
                         type="text"
@@ -112,7 +115,6 @@ export default () => (
                   }}
                 >
                   <Facebook src={facebook} alt={facebook} />
-                  <Youtube src={youtube} alt={youtube} />
                   <Insta src={insta} alt={insta} />
                 </div>
               </Zoom>
@@ -243,6 +245,7 @@ const Select = styled.select`
   text-transform: uppercase;
   border: 1px solid #3c3c3c;
   margin-bottom: 2rem;
+  cursor: pointer;
 `;
 
 const Option = styled.option``;
@@ -264,6 +267,7 @@ const InputLarge = styled.input`
   margin-top: 2px;
   outline: none;
   border: 1px solid #3c3c3c;
+
   @media (max-width: 1200px) {
     height: 5rem;
   }
@@ -305,19 +309,14 @@ const Button = styled.button`
 `;
 
 const Facebook = styled.img`
+  margin-right: 0.5rem;
   @media (min-width: 1800px) {
     width: 1.25rem;
   }
 `;
 
-const Youtube = styled.img`
-  width: 1.75rem;
-  margin: 1rem;
-  @media (min-width: 1800px) {
-    width: 3rem;
-  }
-`;
 const Insta = styled.img`
+  margin-left: 0.5rem;
   @media (min-width: 1800px) {
     width: 2.5rem;
   }
