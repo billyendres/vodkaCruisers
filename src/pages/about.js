@@ -2,7 +2,6 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/about";
 import styled from "styled-components";
-import deck from "./images/deck.svg";
 import FadeIn from "react-fade-in";
 import Bounce from "react-reveal/Bounce";
 import Markdown from "markdown-to-jsx";
@@ -17,6 +16,9 @@ export default () => (
               id
               aboutPageContent
               title
+              aboutimg {
+                url
+              }
             }
           }
         }
@@ -24,7 +26,6 @@ export default () => (
     `}
     render={({ craft }) => {
       const aboutPage = craft.entries[9];
-      console.log(craft);
       const { title, aboutPageContent } = aboutPage;
       return (
         <Layout>
@@ -39,7 +40,10 @@ export default () => (
                 </Paragraph>
               </Bounce>
               <Bounce bottom>
-                <Image src={deck} alt={deck} />
+                <Image
+                  src={craft.entries[9].aboutimg[0].url}
+                  alt={craft.entries[9].aboutimg[0].url}
+                />
               </Bounce>
             </Wrap>
           </FadeIn>

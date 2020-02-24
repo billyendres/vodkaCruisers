@@ -4,9 +4,6 @@ import posed from "react-pose";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Layout from "../../components/Layout/promotions/promotionsThree";
 import backgroundIcons from "../../components/Layout/promotions/images/backgroundIcons.png";
-import bottlesOne from "../../components/Layout/promotions/images/bottlesOne.png";
-import bottlesTwo from "../../components/Layout/promotions/images/bottlesTwo.png";
-import bottlesThree from "../../components/Layout/promotions/images/bottlesThree.png";
 import FadeIn from "react-fade-in";
 import Fade from "react-reveal/Fade";
 import Icon from "@mdi/react";
@@ -38,6 +35,15 @@ export default () => (
               blockOneContent
               blockThreeContent
               blockTwoContent
+              promoImgOne {
+                url
+              }
+              promoImgTwo {
+                url
+              }
+              promoImgThree {
+                url
+              }
             }
           }
         }
@@ -64,7 +70,10 @@ export default () => (
                 <Box style={{ display: "inline-block" }}>
                   <Fade left>
                     <BottleWrapOne>
-                      <BottlesOne src={bottlesOne} alt={bottlesOne} />
+                      <BottlesOne
+                        src={craft.entries[4].promoImgOne[0].url}
+                        alt={craft.entries[4].promoImgOne[0].url}
+                      />
                       <BottleText>{blockOneContent}</BottleText>
                     </BottleWrapOne>
                   </Fade>
@@ -72,7 +81,10 @@ export default () => (
                 <Box style={{ display: "inline-block" }}>
                   <Fade bottom>
                     <BottleWrapTwo>
-                      <BottlesTwo src={bottlesTwo} alt={bottlesTwo} />
+                      <BottlesTwo
+                        src={craft.entries[4].promoImgTwo[0].url}
+                        alt={craft.entries[4].promoImgTwo[0].url}
+                      />
                       <BottleText>{blockTwoContent}</BottleText>
                     </BottleWrapTwo>
                   </Fade>
@@ -80,7 +92,10 @@ export default () => (
                 <Box style={{ display: "inline-block" }}>
                   <Fade right>
                     <BottleWrapThree>
-                      <BottlesThree src={bottlesThree} alt={bottlesThree} />
+                      <BottlesThree
+                        src={craft.entries[4].promoImgThree[0].url}
+                        alt={craft.entries[4].promoImgThree[0].url}
+                      />
                       <BottleText>{blockThreeContent}</BottleText>
                     </BottleWrapThree>
                   </Fade>

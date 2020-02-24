@@ -4,7 +4,6 @@ import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import posed from "react-pose";
 import background from "../../components/Layout/products/images/background.png";
-import bottles from "../../components/Layout/products/images/bottles.png";
 import Layout from "../../components/Layout/products/productsOne";
 import Icon from "@mdi/react";
 import { mdiChevronLeft } from "@mdi/js";
@@ -38,6 +37,9 @@ export default () => (
               productDescription
               title
               header
+              bottleImgOne {
+                url
+              }
             }
           }
         }
@@ -45,9 +47,9 @@ export default () => (
     `}
     render={({ craft }) => {
       const productsPageOne = craft.entries[7];
-      // const productsPageAssets = craft.assets
-      // console.log(craft.assets[0].path);
       const { title, productDescription, header } = productsPageOne;
+      const image = craft.entries[7].bottleImgOne[0];
+      const { url } = image;
       return (
         <Layout>
           <FadeIn>
@@ -78,8 +80,7 @@ export default () => (
               </BodyWrap>
               <Box>
                 <Fade bottom>
-                  {/* {craft.assets[2].path} */}
-                  <Bottles src={bottles} alt={bottles} />
+                  <Bottles src={url} alt={url} />
                 </Fade>
               </Box>
             </Wrap>
