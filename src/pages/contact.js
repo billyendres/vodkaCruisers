@@ -32,7 +32,11 @@ export default () => (
       const [lastName, setLastName] = useState("");
       const [email, setEmail] = useState("");
       const [query, setQuery] = useState("");
-      const [dropdown, setDropdown] = useState("I am the first!");
+      const [dropdown, setDropdown] = useState("");
+
+      const handleSubmit = e => {
+        e.preventDefault();
+      };
 
       return (
         <Layout>
@@ -100,7 +104,9 @@ export default () => (
                 </Zoom>
               </InputWrap>
               <Zoom bottom>
-                <Button>Send</Button>
+                <Button type="submit" onSubmit={handleSubmit}>
+                  Send
+                </Button>
                 <div style={{ marginTop: "1.5rem" }} />
                 <Line />
                 <Message>{socials}</Message>

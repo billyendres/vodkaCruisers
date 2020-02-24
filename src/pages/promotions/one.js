@@ -67,28 +67,32 @@ export default () => (
                 </Link>
               </div>
               <ImageWrap>
-                <Box style={{ display: "inline-block" }}>
-                  <Fade left>
-                    <BottleWrapOne>
-                      <BottlesOne
-                        src={craft.entries[4].promoImgOne[0].url}
-                        alt={craft.entries[4].promoImgOne[0].url}
-                      />
-                      <BottleText>{blockOneContent}</BottleText>
-                    </BottleWrapOne>
-                  </Fade>
-                </Box>
-                <Box style={{ display: "inline-block" }}>
-                  <Fade bottom>
-                    <BottleWrapTwo>
-                      <BottlesTwo
-                        src={craft.entries[4].promoImgTwo[0].url}
-                        alt={craft.entries[4].promoImgTwo[0].url}
-                      />
-                      <BottleText>{blockTwoContent}</BottleText>
-                    </BottleWrapTwo>
-                  </Fade>
-                </Box>
+                <Link to="/promotions/two">
+                  <Box style={{ display: "inline-block" }}>
+                    <Fade left>
+                      <BottleWrapOne>
+                        <BottlesOne
+                          src={craft.entries[4].promoImgOne[0].url}
+                          alt={craft.entries[4].promoImgOne[0].url}
+                        />
+                        <BottleText>{blockOneContent}</BottleText>
+                      </BottleWrapOne>
+                    </Fade>
+                  </Box>
+                </Link>
+                <Link to="/promotions/three">
+                  <Box style={{ display: "inline-block" }}>
+                    <Fade bottom>
+                      <BottleWrapTwo>
+                        <BottlesTwo
+                          src={craft.entries[4].promoImgTwo[0].url}
+                          alt={craft.entries[4].promoImgTwo[0].url}
+                        />
+                        <BottleText>{blockTwoContent}</BottleText>
+                      </BottleWrapTwo>
+                    </Fade>
+                  </Box>
+                </Link>
                 <Box style={{ display: "inline-block" }}>
                   <Fade right>
                     <BottleWrapThree>

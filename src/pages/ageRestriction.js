@@ -20,8 +20,6 @@ const AgeRestriction = () => {
 
   const age = moment().format("YYYY") - year;
 
-  console.log(parseFloat(moment().format("YYYY")));
-
   const countries = [
     "USA",
     "Canada",
@@ -70,6 +68,10 @@ const AgeRestriction = () => {
     } else {
       setYear(e.target.value);
     }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
   };
 
   return (
@@ -153,7 +155,9 @@ const AgeRestriction = () => {
         {age >= 18 ? (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Link to="/home" style={{ textDecoration: "none" }}>
-              <Button>Enter</Button>
+              <Button type="submit" onSubmit={handleSubmit}>
+                Enter
+              </Button>
             </Link>
           </div>
         ) : (
@@ -356,6 +360,7 @@ const Button = styled.button`
   color: #ffffff;
   border: none;
   cursor: pointer;
+  outline: none;
   padding: 2rem 8rem;
   margin-top: 1rem;
   margin-bottom: 4rem;
