@@ -7,6 +7,7 @@ import insta from "../components/Layout/contact/images/insta.svg";
 import FadeIn from "react-fade-in";
 import Zoom from "react-reveal/Zoom";
 import Markdown from "markdown-to-jsx";
+import axios from "axios";
 
 export default () => (
   <StaticQuery
@@ -33,6 +34,41 @@ export default () => (
       const [email, setEmail] = useState("");
       const [query, setQuery] = useState("");
       const [dropdown, setDropdown] = useState("");
+      const [serverState, setServerState] = useState({
+        submitting: false,
+        status: null,
+      });
+
+      const handleServerResponse = (ok, msg, form) => {
+        setServerState({
+          submitting: false,
+          status: { ok, msg },
+        });
+        if (ok) {
+          form.reset();
+        }
+      };
+
+      const handleOnSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        setServerState({ submitting: true });
+        axios({
+          method: "post",
+          url: "https://getform.io/f/d0d27ed4-babe-4dd7-a731-a2469dbbeecb",
+          data: new FormData(form),
+        })
+          .then(r => {
+            handleServerResponse(
+              true,
+              "Thanks for your message - one of the team will get back to you soon",
+              form
+            );
+          })
+          .catch(r => {
+            handleServerResponse(false, r.response.data.error, form);
+          });
+      };
 
       const handleSubmit = e => {
         e.preventDefault();
@@ -60,53 +96,64 @@ export default () => (
               </Zoom>
               <InputWrap>
                 <Zoom bottom>
-                  <form>
+                  <form onSubmit={handleOnSubmit}>
                     <Input
                       type="text"
+                      name="First Name"
                       placeholder="First Name*"
                       value={firstName}
                       onChange={e => setFirstName(e.target.value)}
                     />
                     <Input
                       type="text"
+                      name="Last Name"
                       placeholder="Last Name*"
                       value={lastName}
                       onChange={e => setLastName(e.target.value)}
                     />
                     <Input
-                      type="text"
+                      type="email"
+                      name="email"
                       placeholder="Your Email*"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
                     />
-                    <Select>
+                    {/* <Select>
                       <Option
+                        name="subject"
                         placeholder="Subject"
                         value={dropdown}
                         onChange={e => setDropdown(e.target.value)}
                       >
                         Subject
                       </Option>
-                      {console.log(dropdown)}
                       <Option value="saab">One</Option>
                       <Option value="mercedes">Two</Option>
                       <Option value="audi">Three</Option>
-                    </Select>
+                    </Select> */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <InputLarge
+                        name="question"
                         type="text"
                         placeholder="I'd like to..."
                         value={query}
                         onChange={e => setQuery(e.target.value)}
                       />
                     </div>
+                    <Button type="submit" disabled={serverState.submitting}>
+                      Send
+                    </Button>
+                    {serverState.status && (
+                      <Response
+                        className={!serverState.status.ok ? "errorMsg" : ""}
+                      >
+                        {serverState.status.msg}
+                      </Response>
+                    )}
                   </form>
                 </Zoom>
               </InputWrap>
               <Zoom bottom>
-                <Button type="submit" onSubmit={handleSubmit}>
-                  Send
-                </Button>
                 <div style={{ marginTop: "1.5rem" }} />
                 <Line />
                 <Message>{socials}</Message>
@@ -212,19 +259,28 @@ const Line = styled.div`
 `;
 
 const InputWrap = styled.div`
-  margin-top: 5.5rem;
+  margin-top: 2rem;
   margin-left: 6rem;
   margin-right: 6rem;
-  height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   @media (max-width: 1203px) {
-    margin-top: 7.5rem;
+    margin-top: 2rem;
   }
   @media (max-width: 699px) {
-    margin-top: 11rem;
+    margin-top: 2rem;
   }
+`;
+
+const Response = styled.p`
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #72bf44;
 `;
 
 const Input = styled.input`
@@ -236,7 +292,7 @@ const Input = styled.input`
   letter-spacing: 0.1em;
   border-radius: 5px;
   text-transform: uppercase;
-  color: #c6c6c6;
+  color: #494b4d;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 2px;
@@ -245,26 +301,26 @@ const Input = styled.input`
   margin-bottom: 1rem;
 `;
 
-const Select = styled.select`
-  font-family: Avenir;
-  padding: 0.5rem 1rem;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 150%;
-  letter-spacing: 0.1em;
-  background: #ffffff;
-  color: #c6c6c6;
-  outline: none;
-  width: 13.85rem;
-  height: 2.5rem;
-  margin: 0 1rem;
-  text-transform: uppercase;
-  border: 1px solid #3c3c3c;
-  margin-bottom: 2rem;
-  cursor: pointer;
-`;
+// const Select = styled.select`
+//   font-family: Avenir;
+//   padding: 0.5rem 1rem;
+//   font-weight: 700;
+//   font-size: 1rem;
+//   line-height: 150%;
+//   letter-spacing: 0.1em;
+//   background: #ffffff;
+//   color: #c6c6c6;
+//   outline: none;
+//   width: 13.85rem;
+//   height: 2.5rem;
+//   margin: 0 1rem;
+//   text-transform: uppercase;
+//   border: 1px solid #3c3c3c;
+//   margin-bottom: 2rem;
+//   cursor: pointer;
+// `;
 
-const Option = styled.option``;
+// const Option = styled.option``;
 
 const InputLarge = styled.input`
   font-family: Avenir;
@@ -274,10 +330,11 @@ const InputLarge = styled.input`
   line-height: 150%;
   letter-spacing: 0.1em;
   border-radius: 5px;
-  color: #c6c6c6;
+  color: #494b4d;
   margin-left: 1rem;
   margin-right: 1rem;
   height: 4rem;
+  text-transform: uppercase;
   width: 30rem;
   display: block;
   margin-top: 2px;
@@ -297,7 +354,7 @@ const Button = styled.button`
   border-radius: 5px;
   color: #ffff;
   width: 32.25rem;
-  margin-top: 5.5rem;
+  margin-top: 2rem;
   margin-left: 6rem;
   margin-right: 6rem;
   padding: 0.75rem 2rem;
@@ -314,11 +371,11 @@ const Button = styled.button`
   border: none;
 
   @media (max-width: 1203px) {
-    margin-top: 6.5rem;
+    margin-top: 2rem;
   }
   @media (max-width: 830px) {
     width: 15rem;
-    margin-top: 10rem;
+    margin-top: 2rem;
     margin-left: 0;
     margin-right: 0;
   }

@@ -67,7 +67,7 @@ export default () => (
                 </Link>
               </div>
               <ImageWrap>
-                <Link to="/promotions/two">
+                <Link to="/promotions/three">
                   <Box style={{ display: "inline-block" }}>
                     <Fade left>
                       <BottleWrapOne>
@@ -80,7 +80,7 @@ export default () => (
                     </Fade>
                   </Box>
                 </Link>
-                <Link to="/promotions/three">
+                <Link to="/promotions/two">
                   <Box style={{ display: "inline-block" }}>
                     <Fade bottom>
                       <BottleWrapTwo>

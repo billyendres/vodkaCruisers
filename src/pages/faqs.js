@@ -190,6 +190,7 @@ const Wrap = styled.div`
   height: 45vh;
   width: 100vw;
   position: relative;
+  /* overflow: scroll; */
 `;
 
 const Background = styled.div`
@@ -219,6 +220,7 @@ const Header = styled.h1`
   letter-spacing: 0.02rem;
   color: #243a76;
   margin-bottom: 0;
+  margin-top: 0;
   width: 100%;
   z-index: 1000;
 `;
@@ -227,7 +229,7 @@ const HeaderTwo = styled.h2`
   margin: 0 2rem 2rem;
   font-style: normal;
   font-weight: 900;
-  font-size: 1.25em;
+  font-size: 1.253em;
   line-height: 120%;
   letter-spacing: 0.05em;
   text-transform: uppercase;

@@ -49,9 +49,11 @@ const Background = styled.img`
 `;
 
 const TextWrap = styled.div`
-  margin-top: 40vh;
-  position: absolute;
+  margin-top: 25vh;
   z-index: 1;
+  @media (max-height: 400px) {
+    margin-top: 10vh;
+  }
 `;
 
 const Header = styled.h1`
