@@ -23,7 +23,6 @@ export default () => (
     render={({ craft }) => {
       const termsPage = craft.entries[4];
       const { title, termsPageContent } = termsPage;
-      console.log(craft.entries);
       return (
         <Layout>
           <FadeIn>

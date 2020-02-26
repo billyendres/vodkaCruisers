@@ -38,8 +38,6 @@ export default () => (
         status: null,
       });
 
-      console.log(craft.entries);
-
       const handleServerResponse = (ok, msg, form) => {
         setServerState({
           submitting: false,
@@ -119,19 +117,6 @@ export default () => (
                       value={email}
                       onChange={e => setEmail(e.target.value)}
                     />
-                    {/* <Select>
-                      <Option
-                        name="subject"
-                        placeholder="Subject"
-                        value={dropdown}
-                        onChange={e => setDropdown(e.target.value)}
-                      >
-                        Subject
-                      </Option>
-                      <Option value="saab">One</Option>
-                      <Option value="mercedes">Two</Option>
-                      <Option value="audi">Three</Option>
-                    </Select> */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <InputLarge
                         name="question"
