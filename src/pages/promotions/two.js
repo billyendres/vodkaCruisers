@@ -13,31 +13,30 @@ import Markdown from "markdown-to-jsx";
 export default () => (
   <StaticQuery
     query={graphql`
-      query PromotionsTwoQuery {
+      query PromotionsPageTwoQuery {
         craft {
           entries {
-            ... on Craft_promotionsTwo_promotionsTwo_Entry {
-              id
-              title
-              blockOneBody
-              blockOneHeader
-              blockTwoBody
-              blockTwoHeader
-              promotionsContent
+            ... on Craft_promotionsPages_promotionsPages_Entry {
+              pageTwoName
+              pageTwoContentBlockOneHeader
+              pageTwoContentBlockOneBody
+              pageTwoContentBlockTwoHeader
+              pageTwoContentBlockTwoBody
+              pageTwoContentBody
             }
           }
         }
       }
     `}
     render={({ craft }) => {
-      const promotionsPageTwo = craft.entries[3];
+      const promotionsPageTwo = craft.entries[0];
       const {
-        title,
-        blockOneBody,
-        blockOneHeader,
-        blockTwoBody,
-        blockTwoHeader,
-        promotionsContent,
+        pageTwoName,
+        pageTwoContentBlockOneHeader,
+        pageTwoContentBlockOneBody,
+        pageTwoContentBlockTwoHeader,
+        pageTwoContentBlockTwoBody,
+        pageTwoContentBody,
       } = promotionsPageTwo;
       return (
         <Layout>
@@ -55,7 +54,7 @@ export default () => (
                         style={{ marginTop: "0.5rem" }}
                       />
                     </Link>
-                    {title}
+                    {pageTwoName}
                     <Link to="/promotions/three">
                       <Icon
                         path={mdiChevronRight}
@@ -68,20 +67,20 @@ export default () => (
                 </LightSpeed>
                 <Block>
                   <LightSpeed>
-                    <BlockHeader>{blockOneHeader}</BlockHeader>
-                    <BlockBody>{blockOneBody}</BlockBody>
+                    <BlockHeader>{pageTwoContentBlockOneHeader}</BlockHeader>
+                    <BlockBody>{pageTwoContentBlockOneBody}</BlockBody>
                   </LightSpeed>
                 </Block>
                 <Block>
                   <LightSpeed>
-                    <BlockHeader>{blockTwoHeader}</BlockHeader>
-                    <BlockBody>{blockTwoBody}</BlockBody>
+                    <BlockHeader>{pageTwoContentBlockTwoHeader}</BlockHeader>
+                    <BlockBody>{pageTwoContentBlockTwoBody}</BlockBody>
                   </LightSpeed>
                 </Block>
                 <OverFlow>
                   <LightSpeed right>
                     <OverflowText>
-                      <Markdown>{promotionsContent}</Markdown>
+                      <Markdown>{pageTwoContentBody}</Markdown>
                     </OverflowText>
                   </LightSpeed>
                 </OverFlow>

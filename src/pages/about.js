@@ -9,13 +9,12 @@ import Markdown from "markdown-to-jsx";
 export default () => (
   <StaticQuery
     query={graphql`
-      query AboutQuery {
+      query AboutUsQuery {
         craft {
           entries {
             ... on Craft_about_about_Entry {
-              id
-              aboutPageContent
               title
+              aboutPageContent
               aboutimg {
                 url
               }
@@ -25,7 +24,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const aboutPage = craft.entries[9];
+      const aboutPage = craft.entries[5];
       const { title, aboutPageContent } = aboutPage;
       return (
         <Layout>
@@ -41,8 +40,8 @@ export default () => (
               </Bounce>
               <Bounce bottom>
                 <Image
-                  src={craft.entries[9].aboutimg[0].url}
-                  alt={craft.entries[9].aboutimg[0].url}
+                  src={craft.entries[5].aboutimg[0].url}
+                  alt={craft.entries[5].aboutimg[0].url}
                 />
               </Bounce>
             </Wrap>

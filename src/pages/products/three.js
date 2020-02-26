@@ -29,15 +29,14 @@ const Box = posed.div({
 export default () => (
   <StaticQuery
     query={graphql`
-      query ProductsThreeQuery {
+      query ProductsPageThreeQuery {
         craft {
           entries {
-            ... on Craft_productsThree_productsThree_Entry {
-              id
-              descriptionProductsThree
-              title
-              headerProductsThree
-              bottleImgThree {
+            ... on Craft_productsPages_productsPages_Entry {
+              pageThreeTitle
+              pageThreeHeader
+              pageThreeDescription
+              pageThreeImage {
                 url
               }
             }
@@ -46,13 +45,13 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const productsPageThree = craft.entries[5];
+      const productsPageThree = craft.entries[1];
       const {
-        title,
-        descriptionProductsThree,
-        headerProductsThree,
+        pageThreeTitle,
+        pageThreeHeader,
+        pageThreeDescription,
       } = productsPageThree;
-      const image = craft.entries[5].bottleImgThree[0];
+      const image = craft.entries[1].pageThreeImage[0];
       const { url } = image;
       return (
         <Layout>
@@ -65,20 +64,20 @@ export default () => (
                     <Link to="/products/two">
                       <Icon path={mdiChevronLeft} size={2} color="white" />
                     </Link>
-                    {title}
+                    {pageThreeTitle}
                     <Link to="/products/one">
                       <Icon path={mdiChevronRight} size={2} color="white" />
                     </Link>
                   </Fade>
                 </Nav>
                 <Fade right>
-                  <Header>{headerProductsThree}</Header>
+                  <Header>{pageThreeHeader}</Header>
                 </Fade>
               </TextWrap>
               <BodyWrap>
                 <Fade right>
                   <Body>
-                    <Markdown>{descriptionProductsThree}</Markdown>
+                    <Markdown>{pageThreeDescription}</Markdown>
                   </Body>
                 </Fade>
               </BodyWrap>

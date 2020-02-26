@@ -12,18 +12,18 @@ export default () => (
       query TermsQuery {
         craft {
           entries {
-            ... on Craft_term_terms_Entry {
-              id
-              title
+            ... on Craft_terms_terms_Entry {
               termsPageContent
+              title
             }
           }
         }
       }
     `}
     render={({ craft }) => {
-      const termsPage = craft.entries[8];
+      const termsPage = craft.entries[4];
       const { title, termsPageContent } = termsPage;
+      console.log(craft.entries);
       return (
         <Layout>
           <FadeIn>

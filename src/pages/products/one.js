@@ -29,15 +29,14 @@ const Box = posed.div({
 export default () => (
   <StaticQuery
     query={graphql`
-      query ProductsOneQuery {
+      query ProductsPageOneQuery {
         craft {
           entries {
-            ... on Craft_productsOne_productsOne_Entry {
-              id
-              productDescription
-              title
-              header
-              bottleImgOne {
+            ... on Craft_productsPages_productsPages_Entry {
+              pageOneTitle
+              pageOneHeader
+              pageOneDescription
+              pageOneImage {
                 url
               }
             }
@@ -46,9 +45,13 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const productsPageOne = craft.entries[7];
-      const { title, productDescription, header } = productsPageOne;
-      const image = craft.entries[7].bottleImgOne[0];
+      const productsPageOne = craft.entries[1];
+      const {
+        pageOneTitle,
+        pageOneHeader,
+        pageOneDescription,
+      } = productsPageOne;
+      const image = craft.entries[1].pageOneImage[0];
       const { url } = image;
       return (
         <Layout>
@@ -61,20 +64,20 @@ export default () => (
                     <Link to="/products/three">
                       <Icon path={mdiChevronLeft} size={2} color="white" />
                     </Link>
-                    {title}
+                    {pageOneHeader}
                     <Link to="/products/two">
                       <Icon path={mdiChevronRight} size={2} color="white" />
                     </Link>
                   </Fade>
                 </Nav>
                 <Fade top>
-                  <Header>{header}</Header>
+                  <Header>{pageOneTitle}</Header>
                 </Fade>
               </TextWrap>
               <BodyWrap>
                 <Fade top>
                   <Body>
-                    <Markdown>{productDescription}</Markdown>
+                    <Markdown>{pageOneDescription}</Markdown>
                   </Body>
                 </Fade>
               </BodyWrap>

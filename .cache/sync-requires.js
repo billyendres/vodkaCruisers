@@ -15,6 +15,7 @@ exports.components = {
   "component---src-pages-products-one-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/products/one.js"))),
   "component---src-pages-products-three-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/products/three.js"))),
   "component---src-pages-products-two-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/products/two.js"))),
+  "component---src-pages-promotions-four-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/promotions/four.js"))),
   "component---src-pages-promotions-one-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/promotions/one.js"))),
   "component---src-pages-promotions-three-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/promotions/three.js"))),
   "component---src-pages-promotions-two-js": hot(preferDefault(require("/Users/billyendres/Sites/vodkaCruiser/src/pages/promotions/two.js"))),

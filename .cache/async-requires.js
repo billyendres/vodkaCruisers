@@ -12,6 +12,7 @@ exports.components = {
   "component---src-pages-products-one-js": () => import("./../src/pages/products/one.js" /* webpackChunkName: "component---src-pages-products-one-js" */),
   "component---src-pages-products-three-js": () => import("./../src/pages/products/three.js" /* webpackChunkName: "component---src-pages-products-three-js" */),
   "component---src-pages-products-two-js": () => import("./../src/pages/products/two.js" /* webpackChunkName: "component---src-pages-products-two-js" */),
+  "component---src-pages-promotions-four-js": () => import("./../src/pages/promotions/four.js" /* webpackChunkName: "component---src-pages-promotions-four-js" */),
   "component---src-pages-promotions-one-js": () => import("./../src/pages/promotions/one.js" /* webpackChunkName: "component---src-pages-promotions-one-js" */),
   "component---src-pages-promotions-three-js": () => import("./../src/pages/promotions/three.js" /* webpackChunkName: "component---src-pages-promotions-three-js" */),
   "component---src-pages-promotions-two-js": () => import("./../src/pages/promotions/two.js" /* webpackChunkName: "component---src-pages-promotions-two-js" */),

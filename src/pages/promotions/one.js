@@ -27,21 +27,20 @@ const Box = posed.div({
 export default () => (
   <StaticQuery
     query={graphql`
-      query PromotionsOneQuery {
+      query PromotionsPageOneQuery {
         craft {
           entries {
-            ... on Craft_promotionsOne_promotionOne_Entry {
-              id
-              blockOneContent
-              blockThreeContent
-              blockTwoContent
-              promoImgOne {
+            ... on Craft_promotionsPages_promotionsPages_Entry {
+              pageOneContentBlockOne
+              pageOneContentBlockTwo
+              pageOneContentBlockThree
+              pageOneImageOne {
                 url
               }
-              promoImgTwo {
+              pageOneImageTwo {
                 url
               }
-              promoImgThree {
+              pageOneImageThree {
                 url
               }
             }
@@ -50,11 +49,11 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const promotionsPageOne = craft.entries[4];
+      const promotionsPageOne = craft.entries[0];
       const {
-        blockOneContent,
-        blockThreeContent,
-        blockTwoContent,
+        pageOneContentBlockOne,
+        pageOneContentBlockTwo,
+        pageOneContentBlockThree,
       } = promotionsPageOne;
       return (
         <Layout>
@@ -72,10 +71,10 @@ export default () => (
                     <Fade left>
                       <BottleWrapOne>
                         <BottlesOne
-                          src={craft.entries[4].promoImgOne[0].url}
-                          alt={craft.entries[4].promoImgOne[0].url}
+                          src={craft.entries[0].pageOneImageOne[0].url}
+                          alt={craft.entries[0].pageOneImageOne[0].url}
                         />
-                        <BottleText>{blockOneContent}</BottleText>
+                        <BottleText>{pageOneContentBlockOne}</BottleText>
                       </BottleWrapOne>
                     </Fade>
                   </Box>
@@ -85,25 +84,27 @@ export default () => (
                     <Fade bottom>
                       <BottleWrapTwo>
                         <BottlesTwo
-                          src={craft.entries[4].promoImgTwo[0].url}
-                          alt={craft.entries[4].promoImgTwo[0].url}
+                          src={craft.entries[0].pageOneImageTwo[0].url}
+                          alt={craft.entries[0].pageOneImageTwo[0].url}
                         />
-                        <BottleText>{blockTwoContent}</BottleText>
+                        <BottleText>{pageOneContentBlockTwo}</BottleText>
                       </BottleWrapTwo>
                     </Fade>
                   </Box>
                 </Link>
-                <Box style={{ display: "inline-block" }}>
-                  <Fade right>
-                    <BottleWrapThree>
-                      <BottlesThree
-                        src={craft.entries[4].promoImgThree[0].url}
-                        alt={craft.entries[4].promoImgThree[0].url}
-                      />
-                      <BottleText>{blockThreeContent}</BottleText>
-                    </BottleWrapThree>
-                  </Fade>
-                </Box>
+                <Link to="/promotions/four">
+                  <Box style={{ display: "inline-block" }}>
+                    <Fade right>
+                      <BottleWrapThree>
+                        <BottlesThree
+                          src={craft.entries[0].pageOneImageThree[0].url}
+                          alt={craft.entries[0].pageOneImageThree[0].url}
+                        />
+                        <BottleText>{pageOneContentBlockThree}</BottleText>
+                      </BottleWrapThree>
+                    </Fade>
+                  </Box>
+                </Link>
               </ImageWrap>
               <div style={{ position: "absolute", top: "50%", right: "-1rem" }}>
                 <Link to="/promotions/two">

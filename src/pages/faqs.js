@@ -62,7 +62,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const faqs = craft.entries[1];
+      const faqs = craft.entries[3];
       const {
         dropdownFourBody,
         dropdownFourTitle,
@@ -75,14 +75,12 @@ export default () => (
         faqHeader,
         title,
       } = faqs;
-
       const classes = useStyles();
       const [expanded, setExpanded] = useState(false);
 
       const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
       };
-
       return (
         <Layout>
           <FadeIn>
@@ -190,7 +188,6 @@ const Wrap = styled.div`
   height: 45vh;
   width: 100vw;
   position: relative;
-  /* overflow: scroll; */
 `;
 
 const Background = styled.div`

@@ -16,7 +16,6 @@ export default () => (
         craft {
           entries {
             ... on Craft_contact_contact_Entry {
-              id
               contactBody
               contactMessage
               socials
@@ -27,7 +26,7 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const contactPage = craft.entries[0];
+      const contactPage = craft.entries[2];
       const { contactMessage, socials, title, contactBody } = contactPage;
       const [firstName, setFirstName] = useState("");
       const [lastName, setLastName] = useState("");
@@ -38,6 +37,8 @@ export default () => (
         submitting: false,
         status: null,
       });
+
+      console.log(craft.entries);
 
       const handleServerResponse = (ok, msg, form) => {
         setServerState({

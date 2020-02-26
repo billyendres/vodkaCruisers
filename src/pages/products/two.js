@@ -29,15 +29,14 @@ const Box = posed.div({
 export default () => (
   <StaticQuery
     query={graphql`
-      query ProductsTwoQuery {
+      query ProductsPageTwoQuery {
         craft {
           entries {
-            ... on Craft_productsTwo_productsTwo_Entry {
-              id
-              descriptionProductsTwo
-              title
-              headerProductsTwo
-              bottleImgTwo {
+            ... on Craft_productsPages_productsPages_Entry {
+              pageTwoTitle
+              pageTwoHeader
+              pageTwoDescription
+              pageTwoImage {
                 url
               }
             }
@@ -46,13 +45,13 @@ export default () => (
       }
     `}
     render={({ craft }) => {
-      const productsPageTwo = craft.entries[6];
+      const productsPageTwo = craft.entries[1];
       const {
-        title,
-        descriptionProductsTwo,
-        headerProductsTwo,
+        pageTwoTitle,
+        pageTwoHeader,
+        pageTwoDescription,
       } = productsPageTwo;
-      const image = craft.entries[6].bottleImgTwo[0];
+      const image = craft.entries[1].pageTwoImage[0];
       const { url } = image;
       return (
         <Layout>
@@ -65,20 +64,20 @@ export default () => (
                     <Link to="/products/one">
                       <Icon path={mdiChevronLeft} size={2} color="white" />
                     </Link>
-                    {title}
+                    {pageTwoTitle}
                     <Link to="/products/three">
                       <Icon path={mdiChevronRight} size={2} color="white" />
                     </Link>
                   </Fade>
                 </Nav>
                 <Fade left>
-                  <Header>{headerProductsTwo}</Header>
+                  <Header>{pageTwoHeader}</Header>
                 </Fade>
               </TextWrap>
               <BodyWrap>
                 <Fade left>
                   <Body>
-                    <Markdown>{descriptionProductsTwo}</Markdown>
+                    <Markdown>{pageTwoDescription}</Markdown>
                   </Body>
                 </Fade>
               </BodyWrap>
@@ -109,7 +108,7 @@ const Wrap = styled.div`
 
 const Background = styled.img`
   width: 100%;
-  height: 94vh;
+  min-height: 105vh;
   margin-top: 3rem;
   position: absolute;
   left: 2%;

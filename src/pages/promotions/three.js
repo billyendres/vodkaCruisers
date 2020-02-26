@@ -13,30 +13,30 @@ import Markdown from "markdown-to-jsx";
 export default () => (
   <StaticQuery
     query={graphql`
-      query PromotionsThreeQuery {
+      query PromotionsPageThreeQuery {
         craft {
           entries {
-            ... on Craft_promotionsThree_promotionsThree_Entry {
-              id
-              blockOneText
-              blockOneTitle
-              blockTwoText
-              blockTwoTitle
-              title
-              promotionsThreeContent
+            ... on Craft_promotionsPages_promotionsPages_Entry {
+              pageThreeName
+              pageThreeContentBlockOneHeader
+              pageThreeContentBlockOneBody
+              pageThreeContentBlockTwoHeader
+              pageThreeContentBlockTwoBody
+              pageThreeContentBody
             }
           }
         }
       }
     `}
     render={({ craft }) => {
-      const promotionsPageThree = craft.entries[2];
+      const promotionsPageThree = craft.entries[0];
       const {
-        blockOneText,
-        blockOneTitle,
-        blockTwoText,
-        blockTwoTitle,
-        title,
+        pageThreeName,
+        pageThreeContentBlockOneHeader,
+        pageThreeContentBlockOneBody,
+        pageThreeContentBlockTwoHeader,
+        pageThreeContentBlockTwoBody,
+        pageThreeContentBody,
         promotionsThreeContent,
       } = promotionsPageThree;
       return (
@@ -55,7 +55,7 @@ export default () => (
                         style={{ marginTop: "0.5rem" }}
                       />
                     </Link>
-                    {title}
+                    {pageThreeName}
                     <Link to="/promotions/one">
                       <Icon
                         path={mdiChevronRight}
@@ -68,20 +68,20 @@ export default () => (
                 </LightSpeed>
                 <Block>
                   <LightSpeed>
-                    <BlockHeader>{blockOneTitle}</BlockHeader>
-                    <BlockBody>{blockOneText}</BlockBody>
+                    <BlockHeader>{pageThreeContentBlockOneHeader}</BlockHeader>
+                    <BlockBody>{pageThreeContentBlockOneBody}</BlockBody>
                   </LightSpeed>
                 </Block>
                 <Block>
                   <LightSpeed>
-                    <BlockHeader>{blockTwoTitle}</BlockHeader>
-                    <BlockBody>{blockTwoText}</BlockBody>
+                    <BlockHeader>{pageThreeContentBlockTwoHeader}</BlockHeader>
+                    <BlockBody>{pageThreeContentBlockTwoBody}</BlockBody>
                   </LightSpeed>
                 </Block>
                 <OverFlow>
                   <LightSpeed right>
                     <OverflowText>
-                      <Markdown>{promotionsThreeContent}</Markdown>
+                      <Markdown>{pageThreeContentBody}</Markdown>
                     </OverflowText>
                   </LightSpeed>
                 </OverFlow>

@@ -18,6 +18,7 @@ module.exports = {
         fieldName: `craft`,
         typeName: `Craft`,
         url: `http://craft.local:8080/api`,
+        icon: `src/pages/images/logo.png`,
       },
     },
   ],
