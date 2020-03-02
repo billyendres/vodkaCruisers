@@ -287,27 +287,6 @@ const Input = styled.input`
   margin-bottom: 1rem;
 `;
 
-// const Select = styled.select`
-//   font-family: Avenir;
-//   padding: 0.5rem 1rem;
-//   font-weight: 700;
-//   font-size: 1rem;
-//   line-height: 150%;
-//   letter-spacing: 0.1em;
-//   background: #ffffff;
-//   color: #c6c6c6;
-//   outline: none;
-//   width: 13.85rem;
-//   height: 2.5rem;
-//   margin: 0 1rem;
-//   text-transform: uppercase;
-//   border: 1px solid #3c3c3c;
-//   margin-bottom: 2rem;
-//   cursor: pointer;
-// `;
-
-// const Option = styled.option``;
-
 const InputLarge = styled.input`
   font-family: Avenir;
   padding: 0.45rem 1rem;
