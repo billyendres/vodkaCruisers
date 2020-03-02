@@ -21,8 +21,6 @@ var _emitter = _interopRequireDefault(require("./emitter"));
 
 var _router = require("@reach/router");
 
-var _history = require("@reach/router/lib/history");
-
 var _gatsbyLink = require("gatsby-link");
 
 const redirectMap = _redirects.default.reduce((map, redirect) => {
@@ -64,11 +62,18 @@ const onRouteUpdate = (location, prevLocation) => {
     (0, _apiRunnerBrowser.apiRunner)(`onRouteUpdate`, {
       location,
       prevLocation
-    });
+    }); // Temp hack while awaiting https://github.com/reach/router/issues/119
+
+    window.__navigatingToLink = false;
   }
 };
 
 const navigate = (to, options = {}) => {
+  // Temp hack while awaiting https://github.com/reach/router/issues/119
+  if (!options.replace) {
+    window.__navigatingToLink = true;
+  }
+
   let {
     pathname
   } = (0, _gatsbyLink.parsePath)(to);
@@ -173,11 +178,8 @@ function shouldUpdateScroll(prevRouterProps, {
 }
 
 function init() {
-  // The "scroll-behavior" package expects the "action" to be on the location
-  // object so let's copy it over.
-  _history.globalHistory.listen(args => {
-    args.location.action = args.action;
-  });
+  // Temp hack while awaiting https://github.com/reach/router/issues/119
+  window.__navigatingToLink = false;
 
   window.___push = to => navigate(to, {
     replace: false

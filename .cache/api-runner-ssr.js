@@ -1,11 +1,11 @@
 var plugins = [{
-      plugin: require('/var/www/vodkacruisergatsby/node_modules/gatsby-plugin-material-ui/gatsby-ssr'),
+      plugin: require('/Users/billyendres/Sites/vodkaCruiser/node_modules/gatsby-plugin-material-ui/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/var/www/vodkacruisergatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
+      plugin: require('/Users/billyendres/Sites/vodkaCruiser/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/var/www/vodkacruisergatsby/node_modules/gatsby-plugin-transition-link/gatsby-ssr'),
+      plugin: require('/Users/billyendres/Sites/vodkaCruiser/node_modules/gatsby-plugin-transition-link/gatsby-ssr'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
