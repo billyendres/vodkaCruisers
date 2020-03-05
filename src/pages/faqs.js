@@ -39,108 +39,145 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default () => {
-  const classes = useStyles();
-  const [expanded, setExpanded] = useState(false);
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query FAQsQuery {
+        craft {
+          entries {
+            ... on Craft_faqs_faqs_Entry {
+              id
+              dropdownFourBody
+              dropdownFourTitle
+              dropdownOneBody
+              dropdownOneTitle
+              dropdownThreeBody
+              dropdownThreeTitle
+              dropdownTwoBody
+              dropdownTwoTitle
+              title
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const faqs = craft.entries[3];
+      const {
+        dropdownFourBody,
+        dropdownFourTitle,
+        dropdownOneBody,
+        dropdownOneTitle,
+        dropdownThreeBody,
+        dropdownThreeTitle,
+        dropdownTwoBody,
+        dropdownTwoTitle,
+        faqHeader,
+        title,
+      } = faqs;
+      const classes = useStyles();
+      const [expanded, setExpanded] = useState(false);
 
-  const handleChange = panel => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Background>
-            <BackgroundImg src={faqImg} alt={faqImg} />
-            <div
-              className={classes.root}
-              style={{ position: "fixed", width: "50%" }}
-            >
-              <Header>title</Header>
-              <HeaderTwo>faqHeader</HeaderTwo>
-              <ExpansionPanel
-                expanded={expanded === "panel1"}
-                onChange={handleChange("panel1")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header"
+      const handleChange = panel => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+      };
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Background>
+                <BackgroundImg src={faqImg} alt={faqImg} />
+                <div
+                  className={classes.root}
+                  style={{ position: "fixed", width: "50%" }}
                 >
-                  <Typography className={classes.heading}>
-                    dropdownOneTitle
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    <Markdown>dropdownOneBody</Markdown>
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel
-                expanded={expanded === "panel2"}
-                onChange={handleChange("panel2")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel2bh-content"
-                  id="panel2bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    dropdownTwoTitle
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    dropdownTwoBody
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel
-                expanded={expanded === "panel3"}
-                onChange={handleChange("panel3")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel3bh-content"
-                  id="panel3bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    dropdownThreeTitle
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    dropdownThreeBody
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-              <ExpansionPanel
-                expanded={expanded === "panel4"}
-                onChange={handleChange("panel4")}
-              >
-                <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel4bh-content"
-                  id="panel4bh-header"
-                >
-                  <Typography className={classes.heading}>
-                    dropdownFourTitle
-                  </Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <Typography className={classes.text}>
-                    dropdownFourBody
-                  </Typography>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
-            </div>
-          </Background>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+                  <Header>{title}</Header>
+                  <HeaderTwo>{faqHeader}</HeaderTwo>
+                  <ExpansionPanel
+                    expanded={expanded === "panel1"}
+                    onChange={handleChange("panel1")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownOneTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        <Markdown>{dropdownOneBody}</Markdown>
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                  <ExpansionPanel
+                    expanded={expanded === "panel2"}
+                    onChange={handleChange("panel2")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel2bh-content"
+                      id="panel2bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownTwoTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownTwoBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                  <ExpansionPanel
+                    expanded={expanded === "panel3"}
+                    onChange={handleChange("panel3")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel3bh-content"
+                      id="panel3bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownThreeTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownThreeBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                  <ExpansionPanel
+                    expanded={expanded === "panel4"}
+                    onChange={handleChange("panel4")}
+                  >
+                    <ExpansionPanelSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel4bh-content"
+                      id="panel4bh-header"
+                    >
+                      <Typography className={classes.heading}>
+                        {dropdownFourTitle}
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Typography className={classes.text}>
+                        {dropdownFourBody}
+                      </Typography>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                </div>
+              </Background>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

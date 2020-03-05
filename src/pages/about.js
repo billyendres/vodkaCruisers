@@ -6,30 +6,51 @@ import FadeIn from "react-fade-in";
 import Bounce from "react-reveal/Bounce";
 import Markdown from "markdown-to-jsx";
 
-export default () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Bounce top>
-            <Header>title</Header>
-          </Bounce>
-          <Bounce top>
-            <Paragraph>
-              <Markdown>aboutPageContent</Markdown>
-            </Paragraph>
-          </Bounce>
-          <Bounce bottom>
-            {/* <Image
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query AboutUsQuery {
+        craft {
+          entries {
+            ... on Craft_about_about_Entry {
+              title
+              aboutPageContent
+              aboutimg {
+                url
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const aboutPage = craft.entries[5];
+      const { title, aboutPageContent } = aboutPage;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Bounce top>
+                <Header>{title}</Header>
+              </Bounce>
+              <Bounce top>
+                <Paragraph>
+                  <Markdown>{aboutPageContent}</Markdown>
+                </Paragraph>
+              </Bounce>
+              <Bounce bottom>
+                <Image
                   src={craft.entries[5].aboutimg[0].url}
                   alt={craft.entries[5].aboutimg[0].url}
-                /> */}
-          </Bounce>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+                />
+              </Bounce>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

@@ -24,68 +24,100 @@ const Box = posed.div({
   },
 });
 
-export default () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Background src={backgroundIcons} alt={backgroundIcons} />
-        <Wrap>
-          <div style={{ position: "absolute", top: "50%", left: "-1rem" }}>
-            <Link to="/promotions/three">
-              <Icon path={mdiChevronLeft} size={4} color="white" />
-            </Link>
-          </div>
-          <ImageWrap>
-            <Link to="/promotions/three">
-              <Box style={{ display: "inline-block" }}>
-                <Fade left>
-                  <BottleWrapOne>
-                    {/* <BottlesOne
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query PromotionsPageOneQuery {
+        craft {
+          entries {
+            ... on Craft_promotionsPages_promotionsPages_Entry {
+              pageOneContentBlockOne
+              pageOneContentBlockTwo
+              pageOneContentBlockThree
+              pageOneImageOne {
+                url
+              }
+              pageOneImageTwo {
+                url
+              }
+              pageOneImageThree {
+                url
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const promotionsPageOne = craft.entries[0];
+      const {
+        pageOneContentBlockOne,
+        pageOneContentBlockTwo,
+        pageOneContentBlockThree,
+      } = promotionsPageOne;
+      return (
+        <Layout>
+          <FadeIn>
+            <Background src={backgroundIcons} alt={backgroundIcons} />
+            <Wrap>
+              <div style={{ position: "absolute", top: "50%", left: "-1rem" }}>
+                <Link to="/promotions/three">
+                  <Icon path={mdiChevronLeft} size={4} color="white" />
+                </Link>
+              </div>
+              <ImageWrap>
+                <Link to="/promotions/three">
+                  <Box style={{ display: "inline-block" }}>
+                    <Fade left>
+                      <BottleWrapOne>
+                        <BottlesOne
                           src={craft.entries[0].pageOneImageOne[0].url}
                           alt={craft.entries[0].pageOneImageOne[0].url}
-                        /> */}
-                    <BottleText>{pageOneContentBlockOne}</BottleText>
-                  </BottleWrapOne>
-                </Fade>
-              </Box>
-            </Link>
-            <Link to="/promotions/two">
-              <Box style={{ display: "inline-block" }}>
-                <Fade bottom>
-                  <BottleWrapTwo>
-                    {/* <BottlesTwo
+                        />
+                        <BottleText>{pageOneContentBlockOne}</BottleText>
+                      </BottleWrapOne>
+                    </Fade>
+                  </Box>
+                </Link>
+                <Link to="/promotions/two">
+                  <Box style={{ display: "inline-block" }}>
+                    <Fade bottom>
+                      <BottleWrapTwo>
+                        <BottlesTwo
                           src={craft.entries[0].pageOneImageTwo[0].url}
                           alt={craft.entries[0].pageOneImageTwo[0].url}
-                        /> */}
-                    <BottleText>{pageOneContentBlockTwo}</BottleText>
-                  </BottleWrapTwo>
-                </Fade>
-              </Box>
-            </Link>
-            <Link to="/promotions/four">
-              <Box style={{ display: "inline-block" }}>
-                <Fade right>
-                  <BottleWrapThree>
-                    {/* <BottlesThree
+                        />
+                        <BottleText>{pageOneContentBlockTwo}</BottleText>
+                      </BottleWrapTwo>
+                    </Fade>
+                  </Box>
+                </Link>
+                <Link to="/promotions/four">
+                  <Box style={{ display: "inline-block" }}>
+                    <Fade right>
+                      <BottleWrapThree>
+                        <BottlesThree
                           src={craft.entries[0].pageOneImageThree[0].url}
                           alt={craft.entries[0].pageOneImageThree[0].url}
-                        /> */}
-                    <BottleText>{pageOneContentBlockThree}</BottleText>
-                  </BottleWrapThree>
-                </Fade>
-              </Box>
-            </Link>
-          </ImageWrap>
-          <div style={{ position: "absolute", top: "50%", right: "-1rem" }}>
-            <Link to="/promotions/two">
-              <Icon path={mdiChevronRight} size={4} color="white" />
-            </Link>
-          </div>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+                        />
+                        <BottleText>{pageOneContentBlockThree}</BottleText>
+                      </BottleWrapThree>
+                    </Fade>
+                  </Box>
+                </Link>
+              </ImageWrap>
+              <div style={{ position: "absolute", top: "50%", right: "-1rem" }}>
+                <Link to="/promotions/two">
+                  <Icon path={mdiChevronRight} size={4} color="white" />
+                </Link>
+              </div>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

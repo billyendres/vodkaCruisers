@@ -10,59 +10,88 @@ import { mdiChevronLeft } from "@mdi/js";
 import { mdiChevronRight } from "@mdi/js";
 import Markdown from "markdown-to-jsx";
 
-export default () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Background src={backgroundGreen} alt={backgroundGreen} />
-          <TextWrap>
-            <LightSpeed left>
-              <Header>
-                <Link to="/promotions/one">
-                  <Icon
-                    path={mdiChevronLeft}
-                    size={2}
-                    color="white"
-                    style={{ marginTop: "0.5rem" }}
-                  />
-                </Link>
-                {pageTwoName}
-                <Link to="/promotions/three">
-                  <Icon
-                    path={mdiChevronRight}
-                    size={2}
-                    color="white"
-                    style={{ marginTop: "0.5rem" }}
-                  />
-                </Link>
-              </Header>
-            </LightSpeed>
-            <Block>
-              <LightSpeed>
-                <BlockHeader>pageTwoContentBlockOneHeader</BlockHeader>
-                <BlockBody>pageTwoContentBlockOneBody</BlockBody>
-              </LightSpeed>
-            </Block>
-            <Block>
-              <LightSpeed>
-                <BlockHeader>pageTwoContentBlockTwoHeader</BlockHeader>
-                <BlockBody>pageTwoContentBlockTwoBody</BlockBody>
-              </LightSpeed>
-            </Block>
-            <OverFlow>
-              <LightSpeed right>
-                <OverflowText>
-                  <Markdown>pageTwoContentBody</Markdown>
-                </OverflowText>
-              </LightSpeed>
-            </OverFlow>
-          </TextWrap>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query PromotionsPageTwoQuery {
+        craft {
+          entries {
+            ... on Craft_promotionsPages_promotionsPages_Entry {
+              pageTwoName
+              pageTwoContentBlockOneHeader
+              pageTwoContentBlockOneBody
+              pageTwoContentBlockTwoHeader
+              pageTwoContentBlockTwoBody
+              pageTwoContentBody
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const promotionsPageTwo = craft.entries[0];
+      const {
+        pageTwoName,
+        pageTwoContentBlockOneHeader,
+        pageTwoContentBlockOneBody,
+        pageTwoContentBlockTwoHeader,
+        pageTwoContentBlockTwoBody,
+        pageTwoContentBody,
+      } = promotionsPageTwo;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Background src={backgroundGreen} alt={backgroundGreen} />
+              <TextWrap>
+                <LightSpeed left>
+                  <Header>
+                    <Link to="/promotions/one">
+                      <Icon
+                        path={mdiChevronLeft}
+                        size={2}
+                        color="white"
+                        style={{ marginTop: "0.5rem" }}
+                      />
+                    </Link>
+                    {pageTwoName}
+                    <Link to="/promotions/three">
+                      <Icon
+                        path={mdiChevronRight}
+                        size={2}
+                        color="white"
+                        style={{ marginTop: "0.5rem" }}
+                      />
+                    </Link>
+                  </Header>
+                </LightSpeed>
+                <Block>
+                  <LightSpeed>
+                    <BlockHeader>{pageTwoContentBlockOneHeader}</BlockHeader>
+                    <BlockBody>{pageTwoContentBlockOneBody}</BlockBody>
+                  </LightSpeed>
+                </Block>
+                <Block>
+                  <LightSpeed>
+                    <BlockHeader>{pageTwoContentBlockTwoHeader}</BlockHeader>
+                    <BlockBody>{pageTwoContentBlockTwoBody}</BlockBody>
+                  </LightSpeed>
+                </Block>
+                <OverFlow>
+                  <LightSpeed right>
+                    <OverflowText>
+                      <Markdown>{pageTwoContentBody}</Markdown>
+                    </OverflowText>
+                  </LightSpeed>
+                </OverFlow>
+              </TextWrap>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

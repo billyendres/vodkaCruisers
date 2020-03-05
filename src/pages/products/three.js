@@ -26,43 +26,73 @@ const Box = posed.div({
   },
 });
 
-export default () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Background src={background} alt={background} />
-        <Wrap>
-          <TextWrap>
-            <Nav>
-              <Fade right>
-                <Link to="/products/two">
-                  <Icon path={mdiChevronLeft} size={2} color="white" />
-                </Link>
-                pageThreeTitle
-                <Link to="/products/one">
-                  <Icon path={mdiChevronRight} size={2} color="white" />
-                </Link>
-              </Fade>
-            </Nav>
-            <Fade right>
-              <Header>pageThreeHeader</Header>
-            </Fade>
-          </TextWrap>
-          <BodyWrap>
-            <Fade right>
-              <Body>
-                <Markdown>pageThreeDescription</Markdown>
-              </Body>
-            </Fade>
-          </BodyWrap>
-          <Box>
-            <Fade left>{/* <Bottles src={url} alt={url} /> */}</Fade>
-          </Box>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query ProductsPageThreeQuery {
+        craft {
+          entries {
+            ... on Craft_productsPages_productsPages_Entry {
+              pageThreeTitle
+              pageThreeHeader
+              pageThreeDescription
+              pageThreeImage {
+                url
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const productsPageThree = craft.entries[1];
+      const {
+        pageThreeTitle,
+        pageThreeHeader,
+        pageThreeDescription,
+      } = productsPageThree;
+      const image = craft.entries[1].pageThreeImage[0];
+      const { url } = image;
+      return (
+        <Layout>
+          <FadeIn>
+            <Background src={background} alt={background} />
+            <Wrap>
+              <TextWrap>
+                <Nav>
+                  <Fade right>
+                    <Link to="/products/two">
+                      <Icon path={mdiChevronLeft} size={2} color="white" />
+                    </Link>
+                    {pageThreeTitle}
+                    <Link to="/products/one">
+                      <Icon path={mdiChevronRight} size={2} color="white" />
+                    </Link>
+                  </Fade>
+                </Nav>
+                <Fade right>
+                  <Header>{pageThreeHeader}</Header>
+                </Fade>
+              </TextWrap>
+              <BodyWrap>
+                <Fade right>
+                  <Body>
+                    <Markdown>{pageThreeDescription}</Markdown>
+                  </Body>
+                </Fade>
+              </BodyWrap>
+              <Box>
+                <Fade left>
+                  <Bottles src={url} alt={url} />
+                </Fade>
+              </Box>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;

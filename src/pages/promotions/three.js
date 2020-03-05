@@ -10,59 +10,89 @@ import { mdiChevronLeft } from "@mdi/js";
 import { mdiChevronRight } from "@mdi/js";
 import Markdown from "markdown-to-jsx";
 
-export default () => {
-  return (
-    <Layout>
-      <FadeIn>
-        <Wrap>
-          <Background src={backgroundPurple} alt={backgroundPurple} />
-          <TextWrap>
-            <LightSpeed left>
-              <Header>
-                <Link to="/promotions/two">
-                  <Icon
-                    path={mdiChevronLeft}
-                    size={2}
-                    color="white"
-                    style={{ marginTop: "0.5rem" }}
-                  />
-                </Link>
-                {/* {pageThreeName} */}
-                <Link to="/promotions/one">
-                  <Icon
-                    path={mdiChevronRight}
-                    size={2}
-                    color="white"
-                    style={{ marginTop: "0.5rem" }}
-                  />
-                </Link>
-              </Header>
-            </LightSpeed>
-            <Block>
-              <LightSpeed>
-                <BlockHeader>pageThreeContentBlockOneHeader</BlockHeader>
-                <BlockBody>pageThreeContentBlockOneBody</BlockBody>
-              </LightSpeed>
-            </Block>
-            <Block>
-              <LightSpeed>
-                <BlockHeader>pageThreeContentBlockTwoHeader</BlockHeader>
-                <BlockBody>pageThreeContentBlockTwoBody</BlockBody>
-              </LightSpeed>
-            </Block>
-            <OverFlow>
-              <LightSpeed right>
-                <OverflowText>
-                  <Markdown>pageThreeContentBody</Markdown>
-                </OverflowText>
-              </LightSpeed>
-            </OverFlow>
-          </TextWrap>
-        </Wrap>
-      </FadeIn>
-    </Layout>
-  );
-};
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query PromotionsPageThreeQuery {
+        craft {
+          entries {
+            ... on Craft_promotionsPages_promotionsPages_Entry {
+              pageThreeName
+              pageThreeContentBlockOneHeader
+              pageThreeContentBlockOneBody
+              pageThreeContentBlockTwoHeader
+              pageThreeContentBlockTwoBody
+              pageThreeContentBody
+            }
+          }
+        }
+      }
+    `}
+    render={({ craft }) => {
+      const promotionsPageThree = craft.entries[0];
+      const {
+        pageThreeName,
+        pageThreeContentBlockOneHeader,
+        pageThreeContentBlockOneBody,
+        pageThreeContentBlockTwoHeader,
+        pageThreeContentBlockTwoBody,
+        pageThreeContentBody,
+        promotionsThreeContent,
+      } = promotionsPageThree;
+      return (
+        <Layout>
+          <FadeIn>
+            <Wrap>
+              <Background src={backgroundPurple} alt={backgroundPurple} />
+              <TextWrap>
+                <LightSpeed left>
+                  <Header>
+                    <Link to="/promotions/two">
+                      <Icon
+                        path={mdiChevronLeft}
+                        size={2}
+                        color="white"
+                        style={{ marginTop: "0.5rem" }}
+                      />
+                    </Link>
+                    {pageThreeName}
+                    <Link to="/promotions/one">
+                      <Icon
+                        path={mdiChevronRight}
+                        size={2}
+                        color="white"
+                        style={{ marginTop: "0.5rem" }}
+                      />
+                    </Link>
+                  </Header>
+                </LightSpeed>
+                <Block>
+                  <LightSpeed>
+                    <BlockHeader>{pageThreeContentBlockOneHeader}</BlockHeader>
+                    <BlockBody>{pageThreeContentBlockOneBody}</BlockBody>
+                  </LightSpeed>
+                </Block>
+                <Block>
+                  <LightSpeed>
+                    <BlockHeader>{pageThreeContentBlockTwoHeader}</BlockHeader>
+                    <BlockBody>{pageThreeContentBlockTwoBody}</BlockBody>
+                  </LightSpeed>
+                </Block>
+                <OverFlow>
+                  <LightSpeed right>
+                    <OverflowText>
+                      <Markdown>{pageThreeContentBody}</Markdown>
+                    </OverflowText>
+                  </LightSpeed>
+                </OverFlow>
+              </TextWrap>
+            </Wrap>
+          </FadeIn>
+        </Layout>
+      );
+    }}
+  />
+);
 
 const Wrap = styled.div`
   display: flex;
