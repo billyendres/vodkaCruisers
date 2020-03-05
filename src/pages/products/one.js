@@ -26,73 +26,43 @@ const Box = posed.div({
   },
 });
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query ProductsPageOneQuery {
-        craft {
-          entries {
-            ... on Craft_productsPages_productsPages_Entry {
-              pageOneTitle
-              pageOneHeader
-              pageOneDescription
-              pageOneImage {
-                url
-              }
-            }
-          }
-        }
-      }
-    `}
-    render={({ craft }) => {
-      const productsPageOne = craft.entries[1];
-      const {
-        pageOneTitle,
-        pageOneHeader,
-        pageOneDescription,
-      } = productsPageOne;
-      const image = craft.entries[1].pageOneImage[0];
-      const { url } = image;
-      return (
-        <Layout>
-          <FadeIn>
-            <Background src={background} alt={background} />
-            <Wrap>
-              <TextWrap>
-                <Nav>
-                  <Fade top>
-                    <Link to="/products/three">
-                      <Icon path={mdiChevronLeft} size={2} color="white" />
-                    </Link>
-                    {pageOneHeader}
-                    <Link to="/products/two">
-                      <Icon path={mdiChevronRight} size={2} color="white" />
-                    </Link>
-                  </Fade>
-                </Nav>
-                <Fade top>
-                  <Header>{pageOneTitle}</Header>
-                </Fade>
-              </TextWrap>
-              <BodyWrap>
-                <Fade top>
-                  <Body>
-                    <Markdown>{pageOneDescription}</Markdown>
-                  </Body>
-                </Fade>
-              </BodyWrap>
-              <Box>
-                <Fade bottom>
-                  <Bottles src={url} alt={url} />
-                </Fade>
-              </Box>
-            </Wrap>
-          </FadeIn>
-        </Layout>
-      );
-    }}
-  />
-);
+export default () => {
+  return (
+    <Layout>
+      <FadeIn>
+        <Background src={background} alt={background} />
+        <Wrap>
+          <TextWrap>
+            <Nav>
+              <Fade top>
+                <Link to="/products/three">
+                  <Icon path={mdiChevronLeft} size={2} color="white" />
+                </Link>
+                {/* {pageOneHeader} */}
+                <Link to="/products/two">
+                  <Icon path={mdiChevronRight} size={2} color="white" />
+                </Link>
+              </Fade>
+            </Nav>
+            <Fade top>
+              <Header>pageOneTitle</Header>
+            </Fade>
+          </TextWrap>
+          <BodyWrap>
+            <Fade top>
+              <Body>
+                <Markdown>pageOneDescription</Markdown>
+              </Body>
+            </Fade>
+          </BodyWrap>
+          <Box>
+            <Fade bottom>{/* <Bottles src={url} alt={url} /> */}</Fade>
+          </Box>
+        </Wrap>
+      </FadeIn>
+    </Layout>
+  );
+};
 
 const Wrap = styled.div`
   display: flex;
