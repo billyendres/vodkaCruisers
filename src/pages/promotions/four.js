@@ -3,38 +3,16 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../../components/Layout/promotions/promotionsThree";
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query PromotionsPageFourQuery {
-        craft {
-          entries {
-            ... on Craft_promotionsPages_promotionsPages_Entry {
-              pageFourBackground {
-                url
-              }
-              pageFourButton
-              pageFourWinners
-            }
-          }
-        }
-      }
-    `}
-    render={({ craft }) => {
-      const promotionsPageFour = craft.entries[0];
-      const { pageFourButton, pageFourWinners } = promotionsPageFour;
-      const img = craft.entries[0].pageFourBackground[0].url;
-      return (
-        <Layout>
-          <Wrap>
-            <Background src={img} alt={img} />
-            <Button>Enter Now</Button>
-          </Wrap>
-        </Layout>
-      );
-    }}
-  />
-);
+export default () => {
+  return (
+    <Layout>
+      <Wrap>
+        {/* <Background src={img} alt={img} /> */}
+        <Button>Enter Now</Button>
+      </Wrap>
+    </Layout>
+  );
+};
 
 const Wrap = styled.div`
   display: flex;

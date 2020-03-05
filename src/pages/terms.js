@@ -6,42 +6,24 @@ import FadeIn from "react-fade-in";
 import Flip from "react-reveal/Flip";
 import Markdown from "markdown-to-jsx";
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query TermsQuery {
-        craft {
-          entries {
-            ... on Craft_terms_terms_Entry {
-              termsPageContent
-              title
-            }
-          }
-        }
-      }
-    `}
-    render={({ craft }) => {
-      const termsPage = craft.entries[4];
-      const { title, termsPageContent } = termsPage;
-      return (
-        <Layout>
-          <FadeIn>
-            <Wrap>
-              <Flip top>
-                <Header>{title}</Header>
-              </Flip>
-              <Flip top>
-                <Body>
-                  <Markdown>{termsPageContent}</Markdown>
-                </Body>
-              </Flip>
-            </Wrap>
-          </FadeIn>
-        </Layout>
-      );
-    }}
-  />
-);
+export default () => {
+  return (
+    <Layout>
+      <FadeIn>
+        <Wrap>
+          <Flip top>
+            <Header>title</Header>
+          </Flip>
+          <Flip top>
+            <Body>
+              <Markdown>termsPageContent</Markdown>
+            </Body>
+          </Flip>
+        </Wrap>
+      </FadeIn>
+    </Layout>
+  );
+};
 
 const Wrap = styled.div`
   min-height: 91vh;

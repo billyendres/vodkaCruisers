@@ -9,171 +9,152 @@ import Zoom from "react-reveal/Zoom";
 import Markdown from "markdown-to-jsx";
 import axios from "axios";
 
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query ContactQuery {
-        craft {
-          entries {
-            ... on Craft_contact_contact_Entry {
-              contactBody
-              contactMessage
-              socials
-              title
-            }
-          }
-        }
-      }
-    `}
-    render={({ craft }) => {
-      const contactPage = craft.entries[2];
-      const { contactMessage, socials, title, contactBody } = contactPage;
-      const [firstName, setFirstName] = useState("");
-      const [lastName, setLastName] = useState("");
-      const [email, setEmail] = useState("");
-      const [query, setQuery] = useState("");
-      const [dropdown, setDropdown] = useState("");
-      const [serverState, setServerState] = useState({
-        submitting: false,
-        status: null,
+export default () => {
+  const { contactMessage, socials, title, contactBody } = contactPage;
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [query, setQuery] = useState("");
+  const [dropdown, setDropdown] = useState("");
+  const [serverState, setServerState] = useState({
+    submitting: false,
+    status: null,
+  });
+
+  const handleServerResponse = (ok, msg, form) => {
+    setServerState({
+      submitting: false,
+      status: { ok, msg },
+    });
+    if (ok) {
+      form.reset();
+    }
+  };
+
+  const handleOnSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    setServerState({ submitting: true });
+    axios({
+      method: "post",
+      url: "https://getform.io/f/d0d27ed4-babe-4dd7-a731-a2469dbbeecb",
+      data: new FormData(form),
+    })
+      .then(r => {
+        handleServerResponse(
+          true,
+          "Thanks for your message - one of the team will get back to you soon",
+          form
+        );
+      })
+      .catch(r => {
+        handleServerResponse(false, r.response.data.error, form);
       });
+  };
 
-      const handleServerResponse = (ok, msg, form) => {
-        setServerState({
-          submitting: false,
-          status: { ok, msg },
-        });
-        if (ok) {
-          form.reset();
-        }
-      };
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
 
-      const handleOnSubmit = e => {
-        e.preventDefault();
-        const form = e.target;
-        setServerState({ submitting: true });
-        axios({
-          method: "post",
-          url: "https://getform.io/f/d0d27ed4-babe-4dd7-a731-a2469dbbeecb",
-          data: new FormData(form),
-        })
-          .then(r => {
-            handleServerResponse(
-              true,
-              "Thanks for your message - one of the team will get back to you soon",
-              form
-            );
-          })
-          .catch(r => {
-            handleServerResponse(false, r.response.data.error, form);
-          });
-      };
-
-      const handleSubmit = e => {
-        e.preventDefault();
-      };
-
-      return (
-        <Layout>
-          <FadeIn>
-            <div style={{ minHeight: "90vh" }}>
-              <Wrap>
-                <TextWrap>
-                  <Zoom top>
-                    <Header>{title}</Header>
-                  </Zoom>
-                  <Zoom top>
-                    <Body>{contactBody}</Body>
-                  </Zoom>
-                </TextWrap>
-              </Wrap>
-              <Zoom bottom>
-                <Line />
-                <Message>
-                  <Markdown>{contactMessage}</Markdown>
-                </Message>
+  return (
+    <Layout>
+      <FadeIn>
+        <div style={{ minHeight: "90vh" }}>
+          <Wrap>
+            <TextWrap>
+              <Zoom top>
+                <Header>{title}</Header>
               </Zoom>
-              <InputWrap>
-                <Zoom bottom>
-                  <form onSubmit={handleOnSubmit}>
-                    <Input
-                      type="text"
-                      name="First Name"
-                      placeholder="First Name*"
-                      value={firstName}
-                      onChange={e => setFirstName(e.target.value)}
-                    />
-                    <Input
-                      type="text"
-                      name="Last Name"
-                      placeholder="Last Name*"
-                      value={lastName}
-                      onChange={e => setLastName(e.target.value)}
-                    />
-                    <Input
-                      type="email"
-                      name="email"
-                      placeholder="Your Email*"
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
-                    />
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <InputLarge
-                        name="question"
-                        type="text"
-                        placeholder="I'd like to..."
-                        value={query}
-                        onChange={e => setQuery(e.target.value)}
-                      />
-                    </div>
-                    <Button type="submit" disabled={serverState.submitting}>
-                      Send
-                    </Button>
-                    {serverState.status && (
-                      <Response
-                        className={!serverState.status.ok ? "errorMsg" : ""}
-                      >
-                        {serverState.status.msg}
-                      </Response>
-                    )}
-                  </form>
-                </Zoom>
-              </InputWrap>
-              <Zoom bottom>
-                <div style={{ marginTop: "1.5rem" }} />
-                <Line />
-                <Message>{socials}</Message>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginTop: "1rem",
-                  }}
-                >
-                  <a
-                    href="https://www.facebook.com/vodkacruiser"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Facebook src={facebook} alt={facebook} />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/vodkacruiser/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Insta src={insta} alt={insta} />
-                  </a>
+              <Zoom top>
+                <Body>{contactBody}</Body>
+              </Zoom>
+            </TextWrap>
+          </Wrap>
+          <Zoom bottom>
+            <Line />
+            <Message>
+              <Markdown>{contactMessage}</Markdown>
+            </Message>
+          </Zoom>
+          <InputWrap>
+            <Zoom bottom>
+              <form onSubmit={handleOnSubmit}>
+                <Input
+                  type="text"
+                  name="First Name"
+                  placeholder="First Name*"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                />
+                <Input
+                  type="text"
+                  name="Last Name"
+                  placeholder="Last Name*"
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email*"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                />
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <InputLarge
+                    name="question"
+                    type="text"
+                    placeholder="I'd like to..."
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                  />
                 </div>
-              </Zoom>
+                <Button type="submit" disabled={serverState.submitting}>
+                  Send
+                </Button>
+                {serverState.status && (
+                  <Response
+                    className={!serverState.status.ok ? "errorMsg" : ""}
+                  >
+                    {serverState.status.msg}
+                  </Response>
+                )}
+              </form>
+            </Zoom>
+          </InputWrap>
+          <Zoom bottom>
+            <div style={{ marginTop: "1.5rem" }} />
+            <Line />
+            <Message>{socials}</Message>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "1rem",
+              }}
+            >
+              <a
+                href="https://www.facebook.com/vodkacruiser"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Facebook src={facebook} alt={facebook} />
+              </a>
+              <a
+                href="https://www.instagram.com/vodkacruiser/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Insta src={insta} alt={insta} />
+              </a>
             </div>
-          </FadeIn>
-        </Layout>
-      );
-    }}
-  />
-);
+          </Zoom>
+        </div>
+      </FadeIn>
+    </Layout>
+  );
+};
 
 const Wrap = styled.div`
   display: flex;
