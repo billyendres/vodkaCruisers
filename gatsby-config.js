@@ -13,7 +13,6 @@ module.exports = {
 
     {
       resolve: `gatsby-source-filesystem`,
-      resolve: "gatsby-source-graphql",
       options: {
         fieldName: `craft`,
         typeName: `Craft`,
